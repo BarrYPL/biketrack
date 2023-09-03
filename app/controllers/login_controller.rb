@@ -7,10 +7,10 @@ class LoginController < ApplicationController
         strava_key_handler = "https://www.strava.com/oauth/token"
         response = RestClient.post(strava_key_handler, {:client_id => '113042', :client_secret => '0935331f476fe183e93f1d8ab5281a491dabf9be', :code => params[:code], :grant_type => 'authorization_code'})        
         @params = JSON.parse(response.body)
-        if UserInfo.exists?(athlete_id: @params[:athlete[:id]])
-            @txt = "We know him."
-        else
-            @txt = "Adding to db."
-        end
+        #if UserInfo.exists?(athlete_id: @params[:athlete[:id]])
+        #    @txt = "We know him."
+        #else
+        #    @txt = "Adding to db."
+        #end
     end
 end
