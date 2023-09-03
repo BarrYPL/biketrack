@@ -72,3 +72,5 @@ group :test do
 end
 
 gem 'oauth2', '~> 2.0', '>= 2.0.9'
+gem 'json', '~> 2.6', '>= 2.6.3'
+gem 'rest-client', '~> 2.1'
