@@ -10,7 +10,7 @@ class LoginController < ApplicationController
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
             @txt = "We know him."
         else
-            UserInfo.Create!(
+            UserInfo.create!(
                 token_type: @params['token_type'],
                 expires_at: @params['expires_at'],
                 expires_in: @params['expires_in'],
