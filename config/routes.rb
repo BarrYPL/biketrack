@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/home', to: 'home#index'
   get '/login', to: 'login#redirect_oauth'
-  get '/oauth-callback' to: 'login#authenticate'
+  get '/oauth-callback', to: 'login#authenticate'
   root 'home#index'
 end
