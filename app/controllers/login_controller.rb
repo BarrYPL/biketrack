@@ -8,7 +8,7 @@ class LoginController < ApplicationController
         response = RestClient.post(strava_key_handler, {:client_id => '113042', :client_secret => '0935331f476fe183e93f1d8ab5281a491dabf9be', :code => params[:code], :grant_type => 'authorization_code'})        
         @params = JSON.parse(response.body)
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
-            @txt = "We know him."
+            @txt = "Hello again"
         else
             UserInfo.create!(
                 token_type: @params['token_type'],
@@ -37,7 +37,7 @@ class LoginController < ApplicationController
                 athlete_friend_id: @params['athlete']['friend'],
                 athlete_follower_id: @params['athlete']['follower']
             )
-            @txt = "Added to db."
+            @txt = "Welcome"
         end
     end
 end

@@ -1,4 +1,6 @@
-<h1>Authenticate</h1>
+<h1>User Profile</h1>
 <% if @params.present? %>
-    <%= @txt %>
+    <%= @txt %><%= @params["athlete"]["firstname"]%>
+    <%= @params %>
 <% end %>
+<%= link_to 'Home', homepage_path %>
