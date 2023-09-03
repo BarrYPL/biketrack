@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/home', to: 'home#index'
+  get '/login', to: 'login#redirect_oauth'
+  get '/oauth-callback' to: 'login#authenticate'
+  root 'home#index'
 end
