@@ -10,7 +10,7 @@ class LoginController < ApplicationController
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
             loggedin_user = UserInfo.find_by(athlete_id: @params["athlete"]["id"])
             @txt = "Hello again "
-            @curr_user = loggedin_user.all
+            @curr_user = loggedin_user
         else
             UserInfo.create!(
                 token_type: @params['token_type'],
