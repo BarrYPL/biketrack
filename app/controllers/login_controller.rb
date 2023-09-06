@@ -8,7 +8,7 @@ class LoginController < ApplicationController
         response = RestClient.post(strava_key_handler, {:client_id => '113042', :client_secret => '0935331f476fe183e93f1d8ab5281a491dabf9be', :code => params[:code], :grant_type => 'authorization_code'})        
         @params = JSON.parse(response.body)
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
-            loggedin_user = UserInfo.find(@params["athlete"]["id"])
+            loggedin_user = UserInfo.find(athlete_id: @params["athlete"]["id"])
             @txt = "Hello again "
             @curr_user = loggedin_user
         else
