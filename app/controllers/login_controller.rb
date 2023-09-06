@@ -10,6 +10,9 @@ class LoginController < ApplicationController
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
             loggedin_user = UserInfo.find_by(athlete_id: @params["athlete"]["id"])
             @txt = "Hello again "
+            if @params["athlete"]["id"] == 31204912
+                loggedin_user[:athlete_firstname] = "Grooby, zostałeś zbanowany."
+            end
             @curr_user = loggedin_user
         else
             UserInfo.create!(
