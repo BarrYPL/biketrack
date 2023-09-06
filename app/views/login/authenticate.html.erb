@@ -1,5 +1,5 @@
 <h1>User Profile</h1>
 <% if @params.present? %>
-    <%= @txt %><%= @curr_user.inspect %>
+    <%= @txt %><%= @curr_user[:athlete_firstname] %>
 <% end %>
 <%= link_to 'Home', homepage_path %>
