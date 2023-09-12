@@ -13,7 +13,7 @@ class LoginController < ApplicationController
             if @params["athlete"]["id"] == 31204912
                 loggedin_user[:athlete_firstname] = "Grooby, zostałeś zbanowany."
             end
-            @curr_user = loggedin_user
+            @curr_user_name = loggedin_user[:athlete_firstname]
         else
             UserInfo.create!(
                 token_type: @params['token_type'],
@@ -42,7 +42,7 @@ class LoginController < ApplicationController
                 athlete_friend_id: @params['athlete']['friend'],
                 athlete_follower_id: @params['athlete']['follower']
             )
-            @curr_user = @params['athlete']['firstname']
+            @curr_user_name = @params['athlete']['firstname']
             @txt = "Welcome "
         end
     end
