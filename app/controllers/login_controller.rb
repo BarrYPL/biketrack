@@ -42,6 +42,7 @@ class LoginController < ApplicationController
                 athlete_friend_id: @params['athlete']['friend'],
                 athlete_follower_id: @params['athlete']['follower']
             )
+            @curr_user = @params['athlete']['firstname']
             @txt = "Welcome "
         end
     end
