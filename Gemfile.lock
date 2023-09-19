@@ -94,6 +94,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -143,6 +144,8 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
+    nokogiri (1.15.4-x64-mingw-ucrt)
+      racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -217,6 +220,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.6.4-x64-mingw-ucrt)
     sqlite3 (1.6.4-x86_64-linux)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
@@ -229,6 +233,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2023.3)
+      tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -251,12 +257,14 @@ GEM
     zeitwerk (2.6.11)
 
 PLATFORMS
+  x64-mingw-ucrt
   x86_64-linux
 
 DEPENDENCIES
   bootsnap
   capybara
   debug
+  ffi
   importmap-rails
   jbuilder
   json (~> 2.6, >= 2.6.3)
