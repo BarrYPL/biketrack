@@ -4,7 +4,7 @@ class LoginController < ApplicationController
     end
 
     def authenticate
-        strava_key_handler = "https://www.strava.com/oauth/token"
+        strava_key_handler = "www.strava.com/oauth/token"
         puts "Params:"
         puts params[:code]
         response = RestClient.post(strava_key_handler, {:client_id => '113042', :client_secret => 'c9fb38720c6838d9f42ef6bace73ca694f948eaa', :code => params[:code], :grant_type => 'authorization_code'})        
