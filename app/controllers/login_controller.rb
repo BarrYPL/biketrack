@@ -5,8 +5,7 @@ class LoginController < ApplicationController
 
     def authenticate
         strava_key_handler = "https://www.strava.com/oauth/token"
-        connection = Excon.new(strava_key_handler)
-        response = connection.post(:client_id => '113042', :client_secret => 'c9fb38720c6838d9f42ef6bace73ca694f948eaa', :code => params[:code], :grant_type => 'authorization_code')
+        response = Excon.post(strava_key_handler, :client_id => '113042', :client_secret => 'c9fb38720c6838d9f42ef6bace73ca694f948eaa', :code => params[:code], :grant_type => 'authorization_code')
         puts response.body
         @params = JSON.parse(response.body)
     end
