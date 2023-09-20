@@ -8,6 +8,8 @@ class LoginController < ApplicationController
         puts "Params:"
         puts params[:code]
         response = Excon.post "https://www.strava.com/oauth/token", {:client_id => '113042', :client_secret => 'c9fb38720c6838d9f42ef6bace73ca694f948eaa', :code => params[:code], :grant_type => 'authorization_code'}        
+        puts response.body
+        =begin
         @params = JSON.parse(response.body)
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
             loggedin_user = UserInfo.find_by(athlete_id: @params["athlete"]["id"])
@@ -47,5 +49,6 @@ class LoginController < ApplicationController
             @curr_user_name = @params['athlete']['firstname']
             @txt = "Welcome "
         end
+        =end
     end
 end
