@@ -9,7 +9,7 @@ class LoginController < ApplicationController
         @params = JSON.parse(response.body)
         puts @params
         if (@params.has_key?("message"))
-            redirect_to homepage
+            redirect_to homepage_url
         end
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
             @txt = "Hello again "
