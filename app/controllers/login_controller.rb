@@ -10,40 +10,41 @@ class LoginController < ApplicationController
         puts @params
         if (@params.has_key?("message"))
             redirect_to homepage_url
-        end
-        if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
-            @txt = "Hello again "
-            @curr_user_name = @params["athlete"]["firstname"]
         else
-            UserInfo.create!(
-                token_type: @params['token_type'],
-                expires_at: @params['expires_at'],
-                expires_in: @params['expires_in'],
-                refresh_token: @params['refresh_token'],
-                access_token: @params['access_token'],
-                athlete_id: @params['athlete']['id'],
-                athlete_username: @params['athlete']['username'],
-                athlete_resource_state: @params['athlete']['resource_state'],
-                athlete_firstname: @params['athlete']['firstname'],
-                athlete_lastname: @params['athlete']['lastname'],
-                athlete_bio: @params['athlete']['bio'],
-                athlete_city: @params['athlete']['city'],
-                athlete_state: @params['athlete']['state'],
-                athlete_country: @params['athlete']['country'],
-                athlete_sex: @params['athlete']['sex'],
-                athlete_premium: @params['athlete']['premium'],
-                athlete_summit: @params['athlete']['summit'],
-                athlete_created_at: DateTime.parse(@params['athlete']['created_at']),
-                athlete_updated_at: DateTime.parse(@params['athlete']['updated_at']),
-                athlete_badge_type_id: @params['athlete']['badge_type_id'],
-                athlete_weight: @params['athlete']['weight'],
-                athlete_profile_medium: @params['athlete']['profile_medium'],
-                athlete_profile: @params['athlete']['profile'],
-                athlete_friend_id: @params['athlete']['friend'],
-                athlete_follower_id: @params['athlete']['follower']
-            )
-            @curr_user_name = @params['athlete']['firstname']
-            @txt = "Welcome "
+            if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
+                @txt = "Hello again "
+                @curr_user_name = @params["athlete"]["firstname"]
+            else
+                UserInfo.create!(
+                    token_type: @params['token_type'],
+                    expires_at: @params['expires_at'],
+                    expires_in: @params['expires_in'],
+                    refresh_token: @params['refresh_token'],
+                    access_token: @params['access_token'],
+                    athlete_id: @params['athlete']['id'],
+                    athlete_username: @params['athlete']['username'],
+                    athlete_resource_state: @params['athlete']['resource_state'],
+                    athlete_firstname: @params['athlete']['firstname'],
+                    athlete_lastname: @params['athlete']['lastname'],
+                    athlete_bio: @params['athlete']['bio'],
+                    athlete_city: @params['athlete']['city'],
+                    athlete_state: @params['athlete']['state'],
+                    athlete_country: @params['athlete']['country'],
+                    athlete_sex: @params['athlete']['sex'],
+                    athlete_premium: @params['athlete']['premium'],
+                    athlete_summit: @params['athlete']['summit'],
+                    athlete_created_at: DateTime.parse(@params['athlete']['created_at']),
+                    athlete_updated_at: DateTime.parse(@params['athlete']['updated_at']),
+                    athlete_badge_type_id: @params['athlete']['badge_type_id'],
+                    athlete_weight: @params['athlete']['weight'],
+                    athlete_profile_medium: @params['athlete']['profile_medium'],
+                    athlete_profile: @params['athlete']['profile'],
+                    athlete_friend_id: @params['athlete']['friend'],
+                    athlete_follower_id: @params['athlete']['follower']
+                )
+                @curr_user_name = @params['athlete']['firstname']
+                @txt = "Welcome "
+            end
         end
     end
 end
