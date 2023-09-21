@@ -8,11 +8,7 @@ class LoginController < ApplicationController
         response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => '113042', :client_secret => 'c9fb38720c6838d9f42ef6bace73ca694f948eaa', :code => params[:code], :grant_type => 'authorization_code'))
         @params = JSON.parse(response.body)
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
-            loggedin_user = UserInfo.find_by(athlete_id: @params["athlete"]["id"])
             @txt = "Hello again "
-            if @params["athlete"]["id"] == 31204912
-                loggedin_user[:athlete_firstname] = "Grooby, zostałeś zbanowany."
-            end
             @curr_user_name = loggedin_user[:athlete_firstname]
         else
             UserInfo.create!(
