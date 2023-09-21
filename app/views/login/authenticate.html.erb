@@ -1,5 +1,6 @@
 <h1>User Profile</h1>
 <% if @params.present? %>
     <%= @txt %><%= @curr_user_name %>
+    <%= @params %>
 <% end %>
 <%= link_to 'Home', homepage_path %>

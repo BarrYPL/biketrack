@@ -7,9 +7,10 @@ class LoginController < ApplicationController
         strava_key_handler = "https://www.strava.com/oauth/token"
         response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => '113042', :client_secret => 'c9fb38720c6838d9f42ef6bace73ca694f948eaa', :code => params[:code], :grant_type => 'authorization_code'))
         @params = JSON.parse(response.body)
+        puts @params
         if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
             @txt = "Hello again "
-            @curr_user_name = loggedin_user[:athlete_firstname]
+            @curr_user_name = @params["athlete"]["firstname"]
         else
             UserInfo.create!(
                 token_type: @params['token_type'],
