@@ -1,9 +1,11 @@
 <h1>User Profile</h1>
 <% if @params.present? %>
-    <div class="profile-card">
-        <h2><%= @txt %></h2>
-        <h3><%= @curr_user_name %><h3>
-        <%= image_tag @params['athlete']['profile'] %>
+    <div class="profile_card">
+        <div class="profile_title">
+            <h2><%= @txt %></h2>
+            <h3><%= @curr_user_name %><h3>
+        </div>
+        <%= image_tag @params['athlete']['profile'] :class => "profile_img" %>
     </div>
 <% end %>
 <%= link_to 'Home', homepage_path %>
