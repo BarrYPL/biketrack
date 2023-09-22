@@ -36,20 +36,6 @@
     bottom: -10px;
 }
 
-*:before, *:after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  html, body {
-    font-size: 62%;
-  }
-
-  body {
-    background: #bde2f6;
-  }
-
   .device {
     position: absolute;
     left: 50%;
@@ -243,7 +229,7 @@
    position: relative;
    height: 10rem;
   }
-  
+
   button {
     margin-top: 44px;
     background-color: #2196d4;
