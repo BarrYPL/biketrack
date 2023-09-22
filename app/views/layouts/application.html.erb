@@ -7,10 +7,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="menu">
+      <h1>biketrack</h1>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

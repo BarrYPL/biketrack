@@ -14,6 +14,7 @@ class LoginController < ApplicationController
             if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
                 @txt = "Hello again "
                 @curr_user_name = @params["athlete"]["firstname"]
+                @athlete_city = @params["athlete"]["city"]
             else
                 UserInfo.create!(
                     token_type: @params['token_type'],

@@ -34,3 +34,36 @@
     background-size: cover;
     background-attachment: fixed;
   }
+
+  h1,
+  h2 {
+    text-transform: uppercase;
+  }
+
+  .menu {
+    position: inherit;
+    display: flex;
+    height: 50px;
+    flex-direction: row;
+    background: #4a4e5a;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu h1 {
+    color: #a3e52e;
+  }
+
+  .container {
+    margin: 5%;
+  }
+
+  .login-btn {
+    display: flex;
+    background: #FB4E04;
+    border-radius: 10px;
+    color: #FEFDF5;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+  }
