@@ -2,92 +2,103 @@
 <% if @params.present? %>
     <div class="profile-card">
         <div class="profile-title">
-            <h2><%= @txt %> <%= @curr_user_name %></h2>
-            <p><%= @athlete_city %></p>
+            <h2>
+                <%= @txt %>
+                    <%= @curr_user_name %>
+            </h2>
+            <p>
+                <%= @athlete_city %>
+            </p>
         </div>
         <%= image_tag @params['athlete']['profile'], class:"profile-img" %>
     </div>
     <div class="stat-container">
-        <div class="slider">
-            <div class="slider-inner">
-              <div class="slide-img">
-                <i class="fas fa-futbol"></i>
-              </div>
-              <div class="slide-img">
-                <i class="fas fa-football-ball"></i>
-              </div>
-              <div class="slide-img">
-                <i class="fas fa-golf-ball"></i>
-              </div>
-              <div class="slide-img">
-                <i class="fas fa-biking"></i>
-              </div>
-              <div class="slide-img">
-                <i class="fas fa-basketball-ball"></i>
-              </div>
-              <div class="slide-img">
-                <i class="fas fa-hockey-puck"></i>
-              </div>
-              <div class="slide-img">
-                <i class="fas fa-swimmer"></i>
-              </div>
+
+        <div class="device"> <!--all window-->
+            <div class="owl-carousel" id="owl-demo">
+                <div class="item">
+                    <div class="planet">
+                        <img class="main_pictures"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468859826/forCodePen/mobileSlider/firstSlider/main.png"
+                            alt="" />
+                    </div>
+                    <div class="orbit_1 animation">
+                        <img class="pictures"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468859826/forCodePen/mobileSlider/firstSlider/orbit_1.png"
+                            alt="" />
+                    </div>
+                    <div class="orbit_2">
+                        <img class="pictures animation_2"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468859826/forCodePen/mobileSlider/firstSlider/orbit_2.png"
+                            alt="" />
+                    </div>
+                    <div class="mid">
+                        <h1>Welkome to the Webmodeler</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="mountains">
+                        <img class="mountains_img"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468860109/forCodePen/mobileSlider/secondSlider/main.png"
+                            alt="" />
+                    </div>
+                    <div class="orbit_2">
+                        <img class="pictures animation_3"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468860109/forCodePen/mobileSlider/secondSlider/orbit_1.png"
+                            alt="" />
+                    </div>
+                    <div class="mid">
+                        <h1>Welkome to the Webmodeler</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="paper">
+                        <img class="paper_img"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468860233/forCodePen/mobileSlider/thirdSlider/main_3.png"
+                            alt="" />
+                        <img class="lines"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468860233/forCodePen/mobileSlider/thirdSlider/lines.png"
+                            alt="" />
+                    </div>
+                    <div class="border">
+                        <img class="pictures"
+                            src="https://res.cloudinary.com/lenadi07/image/upload/v1468860232/forCodePen/mobileSlider/thirdSlider/border.png"
+                            alt="" />
+                    </div>
+                    <div class="mid">
+                        <h1>Welkome to the Webmodeler</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+
             </div>
-          </div>
+
+            <div class="btm customNavigation">
+                <button type="button" name="button"><a class="btn next">Next</a></button>
+            </div>
+        </div>
     </div>
-<% end %>
+    <% end %>
 
-<Script>
-let slider = document.querySelector(".slider");
-let innerSlider = document.querySelector(".slider-inner");
+        <Script>
+            $(document).ready(function () {
 
-let pressed = false;
-let startx;
-let x;
+                var owl = $("owl-demo");
 
-console.log("loaded JS");
+                $("#owl-demo").owlCarousel({
 
-slider.addEventListener("mousedown", (e) => {
-  pressed = true;
-  startx = e.offsetX - innerSlider.offsetLeft;
-  console.log(
-    `OffsetX: ${e.offsetX}, InnerSlider OffsetLeft: ${innerSlider.offsetLeft}`
-  );
-  slider.style.cursor = "grabbing";
-});
+                    navigation: false,
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true
 
-slider.addEventListener("mouseenter", () => {
-  slider.style.cursor = "grab";
-});
-
-slider.addEventListener("mouseup", () => {
-  slider.style.cursor = "grab";
-});
-
-window.addEventListener("mouseup", () => {
-  pressed = false;
-});
-
-slider.addEventListener("mousemove", (e) => {
-  if (!pressed) return;
-  e.preventDefault();
-
-  x = e.offsetX;
-  console.log(`x: ${x}, startx: ${startx}`);
-  console.log(`Diff: ${x - startx}`);
-
-  innerSlider.style.left = `${x - startx}px`;
-  checkBoundary();
-});
-
-function checkBoundary(x, startx) {
-  let outer = slider.getBoundingClientRect();
-  let inner = innerSlider.getBoundingClientRect();
-
-  if (parseInt(innerSlider.style.left) > 0) {
-    innerSlider.style.left = "0px";
-  }
-  if (inner.right < outer.right) {
-    innerSlider.style.left = `-${inner.width - outer.width}px`;
-  }
-}
-</Script>
+                });
+                $(".next").click(function () {
+                    $("#owl-demo").trigger("owl.next");
+                })
+            });
+        </Script>
