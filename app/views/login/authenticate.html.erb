@@ -2,8 +2,7 @@
 <% if @params.present? %>
     <div class="profile-card">
         <div class="profile-title">
-            <h2><%= @txt %></h2>
-            <h3><%= @curr_user_name %><h3>
+            <h2><%= @txt %> <%= @curr_user_name %></h2>
             <p><%= @athlete_city %></p>
         </div>
         <%= image_tag @params['athlete']['profile'], class:"profile-img" %>
