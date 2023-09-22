@@ -13,9 +13,9 @@
         <%= image_tag @params['athlete']['profile'], class:"profile-img" %>
     </div>
     <div class="stat-container">
-
         <div class="device"> <!--all window-->
             <div class="owl-carousel" id="owl-demo">
+
                 <div class="item">
                     <div class="planet">
                         <img class="main_pictures"
@@ -86,12 +86,10 @@
 
         <Script>
             $(document).ready(function () {
-
                 var owl = $("owl-demo");
-
                 $("#owl-demo").owlCarousel({
 
-                    navigation: false,
+                    navigation: false, // Show next and prev buttons
                     slideSpeed: 300,
                     paginationSpeed: 400,
                     singleItem: true
