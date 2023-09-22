@@ -35,3 +35,23 @@
     padding: 15px;
     bottom: -10px;
 }
+
+.gallery {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    max-height: 500px;
+}
+
+.gallery-item {
+    scroll-snap-align: center;
+    min-width: 90%;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
