@@ -5,6 +5,8 @@ let pressed = false;
 let startx;
 let x;
 
+console.log("loaded JS");
+
 slider.addEventListener("mousedown", (e) => {
   pressed = true;
   startx = e.offsetX - innerSlider.offsetLeft;
