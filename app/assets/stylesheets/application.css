@@ -25,6 +25,7 @@
   html, body {
     scroll-behavior: smooth;
     overflow: hidden;
+    color: #FEFDF5;
   }
   
   body {
