@@ -13,3 +13,7 @@
 .profile_card h2{
     margin: 0px;
 }
+
+.porfile_img{
+    border-radius: 50%;
+}

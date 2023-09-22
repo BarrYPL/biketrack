@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Ubuntu",sans-serif;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    scroll-behavior: smooth;
+    overflow: hidden;
+  }
+  
+  body {
+    position: relative;
+    background-image: url('bg1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+  }
