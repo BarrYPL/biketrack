@@ -8,7 +8,13 @@
         <%= image_tag @params['athlete']['profile'], class:"profile-img" %>
     </div>
     <div class="stat-container">
-        <h2>Stats</h2>
+        <div class="gallery js-flickity"
+            data-flickity-options='{ "wrapAround": true }'>
+            <div class="gallery-cell"><h2>Your Stats</h2></div>
+            <div class="gallery-cell"></div>
+            <div class="gallery-cell"></div>
+            <div class="gallery-cell"></div>
+            <div class="gallery-cell"></div>
+        </div>
     </div>
 <% end %>
-<%= link_to 'Home', homepage_path %>

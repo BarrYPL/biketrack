@@ -20,6 +20,7 @@
     text-decoration: none;
     font-family: "Ubuntu",sans-serif;
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
   }
   
   html, body {
