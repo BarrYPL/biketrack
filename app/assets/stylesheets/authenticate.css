@@ -73,11 +73,12 @@
     aspect-ratio: 1;
     border-radius: 50%;
     background: #73fd2e;
+    margin: 0px 10px;
 }
 
 .dots-container {
     display: flex;
     justify-content: space-between;
-    width: 35px;
+    width: fit-content;
     margin: auto;
 }
