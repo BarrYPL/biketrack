@@ -31,6 +31,16 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     const dotElements = document.querySelectorAll(".dot");
+    dotElements.forEach(function(dotElement) {
+    dotElement.addEventListener("click", function() {
+        this.style.transform = "scale(1.5)";
+        dotElements.forEach(function(otherDotElement) {
+            if (otherDotElement !== dotElement) {
+            otherDotElement.style.transform = "scale(1)";
+            }
+        });
+        });
+    });
         if (dotElements.length > 0) {
             dotElements[0].style.transform = "scale(1.5)";
         }
