@@ -54,8 +54,18 @@
     max-height: 500px;
 }
 
+.gallery::-webkit-scrollbar{
+    display: none;
+  }
+
 .gallery-item {
     scroll-snap-align: center;
     min-width: 90%;
     height: 450px;
+}
+
+.dot {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
 }
