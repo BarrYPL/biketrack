@@ -32,14 +32,13 @@
     document.addEventListener("DOMContentLoaded", function() {
     const dotElements = document.querySelectorAll(".dot");
     const galleryItems = document.querySelectorAll(".gallery-item");
+    const gallery = document.querySelector(".gallery");
 
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
         return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            elementRect.left >= galleryRect.left &&
+            elementRect.right <= galleryRect.right
         );
     }
 
@@ -59,7 +58,7 @@
         });
     }
 
+        gallery.addEventListener("scroll", updateDotScale);
         updateDotScale();
-        window.addEventListener("scroll", updateDotScale);
     });
 </script>
