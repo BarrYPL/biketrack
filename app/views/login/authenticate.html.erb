@@ -4,7 +4,7 @@
         <div class="profile-title">
             <h2>
                 <%= @txt %>
-                <span><%= @curr_user_name %></span>
+                <%= @curr_user_name %>
             </h2>
             <p>
                 <%= @athlete_city %>
@@ -15,14 +15,18 @@
     <div class="stat-container">
         <div class="gallery">
             <div class="gallery-item" id="elem-1">
-                <h2>Your stats</h2>
+                <h2>Your last ride</h2>
             </div>
             <div class="gallery-item" id="elem-2">
+                <h2>Your stats</h2>
+            </div>
+            <div class="gallery-item" id="elem-3">
                 <h2>Your Bikes</h2>
             </div>
         </div>
         <div class="dots-container">
             <a href="#elem-1"><div class="dot"></div></a>
+            <a href="#elem-2"><div class="dot"></div></a>
             <a href="#elem-2"><div class="dot"></div></a>
         </div>
     </div>
