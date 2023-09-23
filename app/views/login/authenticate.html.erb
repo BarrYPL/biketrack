@@ -29,5 +29,10 @@
 <% end %>
 
 <script>
-    
+    document.addEventListener("DOMContentLoaded", function() {
+    const dotElements = document.querySelectorAll(".dot");
+        if (dotElements.length > 0) {
+            dotElements[0].style.transform = "scale(1.5)";
+        }
+    });
 </script>

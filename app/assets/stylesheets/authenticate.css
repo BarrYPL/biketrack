@@ -69,14 +69,11 @@
     width: 10px;
     aspect-ratio: 1;
     border-radius: 50%;
+    background: black;
 }
 
 .dots-container {
     display: flex;
     justify-content: space-between;
     width: 35px;
-}
-
-.dots-container:first-child {
-    transform: scale(1.5);
 }
