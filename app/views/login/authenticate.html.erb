@@ -45,14 +45,14 @@
 
     dotElements.forEach(function(dotElement) {
         if (dotElements.length > 0) {
-            dotElements[0].style.transform = "scale(1.5)";
+            dotElements[0].style.transform = "scale(2)";
         }
     });
 
     function updateDotScale() {
         galleryItems.forEach(function(galleryItem, index) {
         if (isElementInViewport(galleryItem)) {
-            dotElements[index].style.transform = "scale(1.5)";
+            dotElements[index].style.transform = "scale(2)";
         } else {
             dotElements[index].style.transform = "scale(1)";
         }
