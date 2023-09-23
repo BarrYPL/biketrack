@@ -35,7 +35,8 @@
     const gallery = document.querySelector(".gallery");
 
     function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
+        const galleryRect = gallery.getBoundingClientRect();
+        const elementRect = el.getBoundingClientRect();
         return (
             elementRect.left >= galleryRect.left &&
             elementRect.right <= galleryRect.right
