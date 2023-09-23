@@ -31,18 +31,35 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     const dotElements = document.querySelectorAll(".dot");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
     dotElements.forEach(function(dotElement) {
-    dotElement.addEventListener("click", function() {
-        this.style.transform = "scale(1.5)";
-        dotElements.forEach(function(otherDotElement) {
-            if (otherDotElement !== dotElement) {
-            otherDotElement.style.transform = "scale(1)";
-            }
-        });
-        });
-    });
         if (dotElements.length > 0) {
             dotElements[0].style.transform = "scale(1.5)";
         }
+    });
+
+    function updateDotScale() {
+        galleryItems.forEach(function(galleryItem, index) {
+        if (isElementInViewport(galleryItem)) {
+            dotElements[index].style.transform = "scale(1.5)";
+        } else {
+            dotElements[index].style.transform = "scale(1)";
+        }
+        });
+    }
+
+        updateDotScale();
+        window.addEventListener("scroll", updateDotScale);
     });
 </script>
