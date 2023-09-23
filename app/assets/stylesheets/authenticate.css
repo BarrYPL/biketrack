@@ -42,6 +42,7 @@
     backdrop-filter: blur( 3px );
     -webkit-backdrop-filter: blur( 3px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    overflow-x: hidden;
 }
 
 .gallery {
