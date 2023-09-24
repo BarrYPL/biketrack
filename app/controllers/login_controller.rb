@@ -14,12 +14,6 @@ class LoginController < ApplicationController
                 @txt = "Hello again "
                 @curr_user_name = @params["athlete"]["firstname"]
                 @athlete_city = @params["athlete"]["city"]
-                session[:current_user_token] = @params['access_token']
-                time_now_to_link = Time.now.to_i.to_s
-                #if Rides.where(athlete_id: @params['athlete']['id'])
-                activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=0&page=1&per_page=30"
-                response = Excon.get(activities_request_url, :headers => {'Authorization' => @params['access_token']})
-                puts response.body
             else
                 UserInfo.create!(
                     token_type: @params['token_type'],
@@ -51,6 +45,12 @@ class LoginController < ApplicationController
                 @curr_user_name = @params['athlete']['firstname']
                 @txt = "Welcome "
             end
+            session[:current_user_token] = @params['access_token']
+            time_now_to_link = Time.now.to_i.to_s
+            #if Rides.where(athlete_id: @params['athlete']['id'])
+            activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=0&page=1&per_page=30"
+            response = Excon.get(activities_request_url, :headers => {'Authorization' => @params['access_token']})
+            puts response.body
         end
     end
 end
