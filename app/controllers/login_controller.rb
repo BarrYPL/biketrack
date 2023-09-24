@@ -50,7 +50,9 @@ class LoginController < ApplicationController
             #if Rides.where(athlete_id: @params['athlete']['id'])
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=0&page=1&per_page=30"
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
-            puts response.body
+            response_rides = JSON.parse(response.body)
+            puts response_rides
+            puts response_rides.count
         end
     end
 end
