@@ -1,0 +1,58 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema[7.0].define(version: 2023_09_24_135212) do
+  create_table "rides", force: :cascade do |t|
+    t.string "name"
+    t.float "distance"
+    t.integer "athlete_id"
+    t.integer "moving_time"
+    t.integer "timestamp"
+    t.string "gear_id"
+    t.float "average_speed"
+    t.float "max_speed"
+    t.float "total_elevation_gain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.string "token_type"
+    t.integer "expires_at"
+    t.integer "expires_in"
+    t.string "refresh_token"
+    t.string "access_token"
+    t.integer "athlete_id"
+    t.string "athlete_username"
+    t.integer "athlete_resource_state"
+    t.string "athlete_firstname"
+    t.string "athlete_lastname"
+    t.string "athlete_bio"
+    t.string "athlete_city"
+    t.string "athlete_state"
+    t.string "athlete_country"
+    t.string "athlete_sex"
+    t.boolean "athlete_premium"
+    t.boolean "athlete_summit"
+    t.datetime "athlete_created_at"
+    t.datetime "athlete_updated_at"
+    t.integer "athlete_badge_type_id"
+    t.float "athlete_weight"
+    t.string "athlete_profile_medium"
+    t.string "athlete_profile"
+    t.integer "athlete_friend_id"
+    t.integer "athlete_follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+end
