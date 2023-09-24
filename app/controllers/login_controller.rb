@@ -51,8 +51,7 @@ class LoginController < ApplicationController
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=0&page=1&per_page=30"
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
-            puts response_rides.class
-            puts response_rides.first
+            @last_ride = response_rides.first
         end
     end
 end
