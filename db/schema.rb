@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_24_135212) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_205034) do
   create_table "rides", force: :cascade do |t|
     t.string "name"
     t.float "distance"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_24_135212) do
     t.float "total_elevation_gain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ride_id"
   end
 
   create_table "user_infos", force: :cascade do |t|

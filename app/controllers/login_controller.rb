@@ -53,7 +53,7 @@ class LoginController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
             @last_ride = response_rides.first
-            if @last_ride.nil? then @last_ride = {} end
+            if @last_ride.nil? then @last_ride = {} else add_ride_to_db(response_rides) end
             if @last_ride['distance'].present?
                 @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
             else
@@ -90,5 +90,10 @@ class LoginController < ApplicationController
         seconds = seconds % 60
     
         return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
+    end
+
+    def add_ride_to_db(params_hash)
+        puts params_hash
+        puts params_hash.class
     end
 end
