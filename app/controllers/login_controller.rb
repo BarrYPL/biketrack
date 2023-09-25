@@ -45,6 +45,7 @@ class LoginController < ApplicationController
                 @curr_user_name = @params['athlete']['firstname']
                 @txt = "Welcome "
             end
+            #get user last ride info
             session[:current_user_token] = @params['access_token']
             time_now_to_link = Time.now.to_i.to_s
             #if Rides.where(athlete_id: @params['athlete']['id'])
@@ -52,11 +53,31 @@ class LoginController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
             @last_ride = response_rides.first
-            @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) if @last_ride['distance'].present? || "--"
-            @last_ride['moving_time'] = format_time(@last_ride['moving_time']) if @last_ride['moving_time'].present? || "--"
-            @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) if @last_ride['total_elevation_gain'].present? || "--"
-            @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) if @last_ride['average_speed'].present? || "--"
-            @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2) if @last_ride['max_speed'].present? || "--"
+            if @last_ride['distance'].present?
+                @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
+            else
+                @last_ride['distance'] = "--"
+            end
+            if @last_ride['moving_time'].present?
+                @last_ride['moving_time'] = format_time(@last_ride['moving_time']) 
+            else 
+                @last_ride['moving_time'] = "--"
+            end
+            if @last_ride['total_elevation_gain'].present?
+                @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0)
+            else
+                @last_ride['total_elevation_gain'] = "--"
+            end
+            if @last_ride['average_speed'].present?
+                @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2)
+            else 
+                @last_ride['average_speed'] = "--"
+            end
+            if @last_ride['max_speed'].present?
+                @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
+            else
+                @last_ride['max_speed'] = "--"
+            end
         end
     end
 
