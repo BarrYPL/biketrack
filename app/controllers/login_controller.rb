@@ -93,7 +93,7 @@ class LoginController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
-        puts params_hash.lenght
+        puts params_hash.count
         puts params_hash.class
     end
 end
