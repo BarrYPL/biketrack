@@ -53,6 +53,8 @@ class LoginController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
             @last_ride = response_rides.first
+            puts @last_ride
+            puts @last_ride.class
             if @last_ride['distance'].present?
                 @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
             else
