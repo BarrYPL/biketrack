@@ -93,7 +93,18 @@ class LoginController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
-        puts params_hash.count
-        puts params_hash.class
+        params_hash.each do |ride|
+            Ride.create!(
+                name: ride['name'],
+                distance: ride['distance'],
+                athlete_id: ride['athlete']['id'],
+                moving_time: ride['moving_time'],
+                timestamp: Time.parse(ride['start_date']).to_i,
+                gear_id: ride['gear_id'],
+                average_speed: ride['average_speed'],
+                max_speed: ride['max_speed'],
+                total_elevation_gain: ride['total_elevation_gain'],
+                ride_id: ride['id']
+            )
     end
 end
