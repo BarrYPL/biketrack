@@ -53,10 +53,20 @@ class LoginController < ApplicationController
             response_rides = JSON.parse(response.body)
             @last_ride = response_rides.first
             @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
-            @last_ride['moving_time'] = (@last_ride['moving_time'] / 3600.0).round(2)
+            @last_ride['moving_time'] = format_time(@last_ride['moving_time'])
             @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0)
             @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2)
             @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
         end
+    end
+
+    private
+
+    def format_time(seconds)
+        hours = seconds / 3600
+        minutes = (seconds % 3600) / 60
+        seconds = seconds % 60
+    
+        return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
     end
 end
