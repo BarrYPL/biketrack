@@ -52,11 +52,11 @@ class LoginController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
             @last_ride = response_rides.first
-            @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
-            @last_ride['moving_time'] = format_time(@last_ride['moving_time'])
-            @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0)
-            @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2)
-            @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
+            @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) if @last_ride['distance'].present? || "--"
+            @last_ride['moving_time'] = format_time(@last_ride['moving_time']) if @last_ride['moving_time'].present? || "--"
+            @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) if @last_ride['total_elevation_gain'].present? || "--"
+            @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) if @last_ride['average_speed'].present? || "--"
+            @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2) if @last_ride['max_speed'].present? || "--"
         end
     end
 
