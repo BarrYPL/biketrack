@@ -106,5 +106,6 @@ class LoginController < ApplicationController
                 total_elevation_gain: ride['total_elevation_gain'],
                 ride_id: ride['id']
             )
+        end
     end
 end
