@@ -94,7 +94,7 @@ class LoginController < ApplicationController
 
     def add_ride_to_db(params_hash)
         params_hash.each do |ride_hash|
-            ride.create!(
+            Ride.create!(
                 name: ride_hash['name'],
                 distance: ride_hash['distance'],
                 athlete_id: ride_hash['athlete']['id'],
