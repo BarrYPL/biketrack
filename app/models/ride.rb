@@ -1,2 +1,3 @@
 class Ride < ApplicationRecord
+
 end
