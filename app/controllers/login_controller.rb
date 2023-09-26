@@ -51,7 +51,7 @@ class LoginController < ApplicationController
             if Ride.where(athlete_id: @params['athlete']['id']).count > 0
                 time_after = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :asc).first[:timestamp]
             end
-            puts "Time_before: #{Time.at(time_now_to_link.to_i)} Time_after: #{Time.at(time_afterto_i)}"
+            puts "Time_before: #{Time.at(time_now_to_link.to_i)} Time_after: #{Time.at(time_after.to_i)}"
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=30"
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
