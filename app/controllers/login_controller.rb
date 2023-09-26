@@ -93,7 +93,7 @@ class LoginController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
-        unless Ride.exists?(ride_id: params_hash["id"])
+        unless Ride.exists?(ride_id: params_hash['id'])
             params_hash.each do |ride_hash|
                 Ride.create!(
                     name: ride_hash['name'],
