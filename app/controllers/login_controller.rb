@@ -93,10 +93,8 @@ class LoginController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
-        puts params_hash.class
-        #puts params_hash['id'].class
-        unless Ride.exists?(ride_id: params_hash['id'])
-            params_hash.each do |ride_hash|
+        params_hash.each do |ride_hash|
+            unless Ride.exists?(ride_id: ride_hash['id'])
                 Ride.create!(
                     name: ride_hash['name'],
                     distance: ride_hash['distance'],
