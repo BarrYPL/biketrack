@@ -50,7 +50,7 @@ class LoginController < ApplicationController
             time_now_to_link = Time.now.to_i.to_s
             if Ride.where(athlete_id: @params['athlete']['id']).count > 0
                 test_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :asc).first
-                puts test_ride.inspect
+                puts test_ride[:timestamp]
             end
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=0&page=1&per_page=30"
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
