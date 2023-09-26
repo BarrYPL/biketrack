@@ -49,7 +49,7 @@ class LoginController < ApplicationController
             session[:current_user_token] = @params['access_token']
             time_now_to_link = Time.now.to_i.to_s
             if Ride.where(athlete_id: @params['athlete']['id']).count > 0
-                time_after = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :asc).first[:timestamp]
+                time_after = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first[:timestamp]
             end
             puts "Time_before: #{Time.at(time_now_to_link.to_i)} Time_after: #{Time.at(time_after.to_i)}"
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=30"
