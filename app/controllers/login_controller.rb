@@ -89,6 +89,10 @@ class LoginController < ApplicationController
                 @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first[:total_elevation_gain]
                 @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance) / 1000.0).round(2)
             end
+            #get all bikes
+            if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
+                @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).distinct.pluck(:gear_id)
+            end
         end
     end
 
