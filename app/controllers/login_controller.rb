@@ -83,7 +83,7 @@ class LoginController < ApplicationController
                 @last_ride['max_speed'] = "--"
             end
             #get max values
-            if Ride.where((athlete_id: @params['athlete']['id']).all.count > 0)
+            if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
                 @max_speed = Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first
                 @longest_ride = Ride.where(athlete_id: @params['athlete']['id']).order(distance: :desc).first
                 @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first
