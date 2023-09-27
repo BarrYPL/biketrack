@@ -87,7 +87,7 @@ class LoginController < ApplicationController
                 @max_speed = (Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first[:max_speed] * 3.6).round(2)
                 @longest_ride = (Ride.where(athlete_id: @params['athlete']['id']).order(distance: :desc).first[:distance].to_f / 1000.0).round(2)
                 @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first[:total_elevation_gain]
-                @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance)).round(2)
+                @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance).class)#.round(2)
             end
         end
     end
