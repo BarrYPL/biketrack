@@ -93,6 +93,14 @@ class LoginController < ApplicationController
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
                 @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id)
             end
+
+            if (!@unique_gear_ids.empty?)
+                @unique_gear_ids.each do |gear|
+                    gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
+                    response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
+                    puts response.body
+                end
+            end
         end
     end
 
@@ -124,4 +132,5 @@ class LoginController < ApplicationController
             end
         end
     end
+
 end

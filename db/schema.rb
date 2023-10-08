@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_26_210921) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_210155) do
+  create_table "bikes", force: :cascade do |t|
+    t.string "name"
+    t.string "brand"
+    t.integer "user_info_id"
+    t.string "bike_id"
+    t.boolean "primary", default: false
+    t.integer "resource_state"
+    t.float "distance"
+    t.string "brand_name"
+    t.string "model_name"
+    t.integer "frame_type"
+    t.text "description", default: "Default Bike."
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rides", force: :cascade do |t|
     t.string "name"
     t.float "distance"
