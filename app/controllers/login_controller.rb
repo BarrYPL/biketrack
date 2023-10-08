@@ -95,13 +95,12 @@ class LoginController < ApplicationController
             end
 
             if (!@unique_gear_ids.empty?)
-                @gears_aray = []
+                @gears_array = []
                 @unique_gear_ids.each do |gear|
                     gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
                     response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
-                    @gears_aray << JSON.parse(response.body)
+                    @gears_array << JSON.parse(response.body)
                 end
-                puts @gears_aray.class
             end
         end
     end
