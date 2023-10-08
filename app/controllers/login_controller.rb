@@ -101,7 +101,7 @@ class LoginController < ApplicationController
                     response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
                     @gears_aray << JSON.parse(response.body)
                 end
-                puts @gears_aray
+                puts @gears_aray.class
             end
         end
     end
