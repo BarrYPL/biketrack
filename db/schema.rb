@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_08_210155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ride_id"
+    t.index ["ride_id"], name: "index_rides_on_ride_id", unique: true
   end
 
   create_table "user_infos", force: :cascade do |t|
