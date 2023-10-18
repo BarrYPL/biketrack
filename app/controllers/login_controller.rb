@@ -57,18 +57,16 @@ class LoginController < ApplicationController
             unless response_rides.first.nil? 
                 add_ride_to_db(response_rides) 
             end
-            @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
-            unless @last_ride.nil?
-                @last_ride['timestamp'] = Time.at(@last_ride['timestamp']).strftime("%A, %B %d, %Y")
-                @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
-                @last_ride['moving_time'] = format_time(@last_ride['moving_time'])
-                @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) 
-                @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) 
-                @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
-            else
-                @last_ride = Hash.new()
+            @last_ride_info = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
+            @last_ride = Hash.new()
+            unless @last_ride_info.nil?
+                @last_ride['timestamp'] = Time.at(@last_ride_info['timestamp']).strftime("%A, %B %d, %Y")
+                @last_ride['distance'] = (@last_ride_info['distance'].to_f / 1000.0).round(2)
+                @last_ride['moving_time'] = format_time(@last_ride_info['moving_time'])
+                @last_ride['total_elevation_gain'] = (@last_ride_info['total_elevation_gain']).round(0) 
+                @last_ride['average_speed'] = (@last_ride_info['average_speed'] * 3.6).round(2) 
+                @last_ride['max_speed'] = (@last_ride_info['max_speed'] * 3.6).round(2)
             end
-            puts @last_ride['timestamp']
             @last_ride['timestamp'] ||= "--"
             @last_ride['distance'] ||= "--" 
             @last_ride['moving_time'] ||= "--"
