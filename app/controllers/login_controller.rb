@@ -61,7 +61,9 @@ class LoginController < ApplicationController
             unless @last_ride.nil?
                 @last_ride['timestamp'] = Time.at(@last_ride['timestamp'])#.strftime("%A, %B %d, %Y") 
                 @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) 
-                @last_ride['moving_time'] = format_time(@last_ride['moving_time']) 
+                @last_ride['moving_time'] = format_time(@last_ride['moving_time'])
+                puts format_time(@last_ride['moving_time'])
+                puts @last_ride['moving_time']
                 @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) 
                 @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) 
                 @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
@@ -110,10 +112,7 @@ class LoginController < ApplicationController
         hours = seconds / 3600
         minutes = (seconds % 3600) / 60
         seconds = seconds % 60
-        
-        puts seconds
-        puts minutes
-        puts hours
+
         return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
     end
 
