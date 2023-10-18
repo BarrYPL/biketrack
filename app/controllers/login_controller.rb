@@ -88,9 +88,11 @@ class LoginController < ApplicationController
             #get all bikes
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
                 @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id)
+            else
+                @unique_gear_ids = []
             end
 
-            if (!@unique_gear_ids.empty?)
+            unless (@unique_gear_ids.empty?)
                 @gears_array = []
                 @unique_gear_ids.each do |gear|
                     gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
