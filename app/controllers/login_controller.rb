@@ -109,11 +109,11 @@ class LoginController < ApplicationController
     private
 
     def format_time(seconds)
-        hours = seconds / 3600
-        minutes = (seconds % 3600) / 60
+        hours = seconds / 3600.0
+        minutes = (seconds % 3600) / 60.0
         seconds = seconds % 60
 
-        return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
+        return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{seconds}"
     end
 
     def add_ride_to_db(params_hash)
