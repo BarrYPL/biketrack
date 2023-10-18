@@ -62,6 +62,7 @@ class LoginController < ApplicationController
                 puts @last_ride['timestamp']
                 @last_ride['timestamp'] = Time.at(@last_ride['timestamp'])#.strftime("%A, %B %d, %Y")
                 puts Time.at(@last_ride['timestamp'])
+                puts @last_ride['timestamp']
                 @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
                 @last_ride['moving_time'] = format_time(@last_ride['moving_time'])
                 puts format_time(@last_ride['moving_time'])
