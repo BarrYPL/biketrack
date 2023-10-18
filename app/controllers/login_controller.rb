@@ -60,6 +60,7 @@ class LoginController < ApplicationController
             @last_ride_info = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
             @last_ride = Hash.new()
             unless @last_ride_info.nil?
+                @last_ride['name'] = @last_ride_info['name']
                 @last_ride['timestamp'] = Time.at(@last_ride_info['timestamp']).strftime("%A, %B %d, %Y")
                 @last_ride['distance'] = (@last_ride_info['distance'].to_f / 1000.0).round(2)
                 @last_ride['moving_time'] = format_time(@last_ride_info['moving_time'])
@@ -67,6 +68,7 @@ class LoginController < ApplicationController
                 @last_ride['average_speed'] = (@last_ride_info['average_speed'] * 3.6).round(2) 
                 @last_ride['max_speed'] = (@last_ride_info['max_speed'] * 3.6).round(2)
             end
+            @last_ride['name'] ||= "--"
             @last_ride['timestamp'] ||= "--"
             @last_ride['distance'] ||= "--" 
             @last_ride['moving_time'] ||= "--"
