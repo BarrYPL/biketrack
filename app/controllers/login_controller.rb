@@ -107,11 +107,13 @@ class LoginController < ApplicationController
     private
 
     def format_time(seconds)
-        puts seconds
         hours = seconds / 3600
         minutes = (seconds % 3600) / 60
         seconds = seconds % 60
-    
+        
+        puts seconds
+        puts minutes
+        puts hours
         return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
     end
 
