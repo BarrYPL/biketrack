@@ -64,7 +64,9 @@ class LoginController < ApplicationController
                 @last_ride['moving_time'] = format_time(@last_ride['moving_time']) 
                 @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) 
                 @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) 
-                @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2) 
+                @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
+            else
+                @last_ride = Hash.new()
             end
             @last_ride['timestamp'] ||= "--"
             @last_ride['distance'] ||= "--" 
