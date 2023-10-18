@@ -60,7 +60,8 @@ class LoginController < ApplicationController
             @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
             unless @last_ride.nil?
                 @last_ride['timestamp'] = Time.at(@last_ride['timestamp'])#.strftime("%A, %B %d, %Y") 
-                @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) 
+                @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
+                puts @last_ride['moving_time']
                 @last_ride['moving_time'] = format_time(@last_ride['moving_time'])
                 puts format_time(@last_ride['moving_time'])
                 puts @last_ride['moving_time']
@@ -105,16 +106,16 @@ class LoginController < ApplicationController
             @gears_array ||= "--"
         end
     end
-
-    private
-
+    
     def format_time(seconds)
-        hours = seconds / 3600.0
-        minutes = (seconds % 3600) / 60.0
+        hours = seconds / 3600
+        minutes = (seconds % 3600) / 60
         seconds = seconds % 60
 
-        return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{seconds}"
+        return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
     end
+
+    private
 
     def add_ride_to_db(params_hash)
         params_hash.each do |ride_hash|
