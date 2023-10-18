@@ -17,7 +17,7 @@
             <div class="gallery-item" id="elem-1">
                 <h2>Your last ride</h2>
                 <h3><span>Name:</span> <%= @last_ride['name'] %></h3>
-                <p><span>Date:</span><%= Time.at(@last_ride['timestamp']) %></p>
+                <p><span>Date:</span><%= Time.at(@last_ride['timestamp']).strftime("%A, %B %d, %Y") %></p>
                 <p><span>Distance:</span> <%= @last_ride['distance'] %> km</p>
                 <p><span>Moving Time:</span> <%= @last_ride['moving_time'] %></p>
                 <p><span>Elevation:</span> <%= @last_ride['total_elevation_gain'] %> m</p>
