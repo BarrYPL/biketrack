@@ -59,6 +59,7 @@ class LoginController < ApplicationController
             end
             @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
             unless @last_ride.nil?
+                puts @last_ride
                 @last_ride['timestamp'] = @last_ride['start_date_local']
                 @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) 
                 @last_ride['moving_time'] = format_time(@last_ride['moving_time']) 
