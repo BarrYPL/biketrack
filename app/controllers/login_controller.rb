@@ -68,6 +68,7 @@ class LoginController < ApplicationController
             else
                 @last_ride = Hash.new()
             end
+            puts @last_ride['timestamp']
             @last_ride['timestamp'] ||= "--"
             @last_ride['distance'] ||= "--" 
             @last_ride['moving_time'] ||= "--"
