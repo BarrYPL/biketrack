@@ -59,6 +59,7 @@ class LoginController < ApplicationController
                 add_ride_to_db(response_rides) 
             end
             @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
+            if @last_ride.nil? then @last_ride = Hash.new() end
             @last_ride['timestamp'] = Time.at(@last_ride['timestmap']).strftime("%A, %B %d, %Y") ||= "--"
             @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) ||= "--"
             @last_ride['moving_time'] = format_time(@last_ride['moving_time']) ||= "--"
