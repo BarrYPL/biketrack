@@ -55,42 +55,26 @@ class LoginController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
             @last_ride = response_rides.first
-            if @last_ride.nil? then @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first else add_ride_to_db(response_rides) end
-            if @last_ride['distance'].present?
-                @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2)
-            else
-                @last_ride['distance'] = "--"
+            unless @last_ride.nil? 
+                add_ride_to_db(response_rides) 
             end
-            if @last_ride['moving_time'].present?
-                @last_ride['moving_time'] = format_time(@last_ride['moving_time']) 
-            else 
-                @last_ride['moving_time'] = "--"
-            end
-            if @last_ride['total_elevation_gain'].present?
-                @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0)
-            else
-                @last_ride['total_elevation_gain'] = "--"
-            end
-            if @last_ride['average_speed'].present?
-                @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2)
-            else 
-                @last_ride['average_speed'] = "--"
-            end
-            if @last_ride['max_speed'].present?
-                @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2)
-            else
-                @last_ride['max_speed'] = "--"
-            end
+            @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
+            @last_ride['timestamp'] = Time.at(@last_ride['timestmap']).strftime("%A, %B %d, %Y") ||= "--"
+            @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) ||= "--"
+            @last_ride['moving_time'] = format_time(@last_ride['moving_time']) ||= "--"
+            @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) ||= "--"
+            @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) ||= "--"
+            @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2) ||= "--"
             #get max values
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
-                @max_speed = (Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first[:max_speed] * 3.6).round(2)
-                @longest_ride = (Ride.where(athlete_id: @params['athlete']['id']).order(distance: :desc).first[:distance].to_f / 1000.0).round(2)
-                @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first[:total_elevation_gain]
-                @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance) / 1000.0).round(2)
+                @max_speed = (Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first[:max_speed] * 3.6).round(2) ||= "--"
+                @longest_ride = (Ride.where(athlete_id: @params['athlete']['id']).order(distance: :desc).first[:distance].to_f / 1000.0).round(2) ||= "--"
+                @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first[:total_elevation_gain] ||= "--"
+                @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance) / 1000.0).round(2) ||= "--"
             end
             #get all bikes
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
-                @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id)
+                @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id) ||= "--"
             end
 
             if (!@unique_gear_ids.empty?)
