@@ -54,28 +54,38 @@ class LoginController < ApplicationController
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=5"
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
             response_rides = JSON.parse(response.body)
-            @last_ride = response_rides.first
-            unless @last_ride.nil? 
+            unless response_rides.first.nil? 
                 add_ride_to_db(response_rides) 
             end
             @last_ride = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
-            if @last_ride.nil? then @last_ride = Hash.new() end
-            @last_ride['timestamp'] = Time.at(@last_ride['timestmap']).strftime("%A, %B %d, %Y") ||= "--"
-            @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) ||= "--"
-            @last_ride['moving_time'] = format_time(@last_ride['moving_time']) ||= "--"
-            @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) ||= "--"
-            @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) ||= "--"
-            @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2) ||= "--"
+            unless @last_ride.nil?
+                @last_ride['timestamp'] = Time.at(@last_ride['timestmap']).strftime("%A, %B %d, %Y") 
+                @last_ride['distance'] = (@last_ride['distance'].to_f / 1000.0).round(2) 
+                @last_ride['moving_time'] = format_time(@last_ride['moving_time']) 
+                @last_ride['total_elevation_gain'] = (@last_ride['total_elevation_gain']).round(0) 
+                @last_ride['average_speed'] = (@last_ride['average_speed'] * 3.6).round(2) 
+                @last_ride['max_speed'] = (@last_ride['max_speed'] * 3.6).round(2) 
+            end
+            @last_ride['timestamp'] ||= "--"
+            @last_ride['distance'] ||= "--" 
+            @last_ride['moving_time'] ||= "--"
+            @last_ride['total_elevation_gain'] ||= "--" 
+            @last_ride['average_speed'] ||= "--" 
+            @last_ride['max_speed'] ||= "--"
             #get max values
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
-                @max_speed = (Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first[:max_speed] * 3.6).round(2) ||= "--"
-                @longest_ride = (Ride.where(athlete_id: @params['athlete']['id']).order(distance: :desc).first[:distance].to_f / 1000.0).round(2) ||= "--"
-                @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first[:total_elevation_gain] ||= "--"
-                @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance) / 1000.0).round(2) ||= "--"
+                @max_speed = (Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first[:max_speed] * 3.6).round(2) 
+                @longest_ride = (Ride.where(athlete_id: @params['athlete']['id']).order(distance: :desc).first[:distance].to_f / 1000.0).round(2) 
+                @max_total_elevation_gain = Ride.where(athlete_id: @params['athlete']['id']).order(total_elevation_gain: :desc).first[:total_elevation_gain] 
+                @total_counted_kilometers = (Ride.where(athlete_id: @params['athlete']['id']).sum(:distance) / 1000.0).round(2) 
             end
+            @max_speed ||= "--"
+            @longest_ride ||= "--"
+            @max_total_elevation_gain ||= "--"
+            @total_counted_kilometers ||= "--"
             #get all bikes
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
-                @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id) ||= "--"
+                @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id)
             end
 
             if (!@unique_gear_ids.empty?)
@@ -86,6 +96,7 @@ class LoginController < ApplicationController
                     @gears_array << JSON.parse(response.body)
                 end
             end
+            @gears_array ||= "--"
         end
     end
 
