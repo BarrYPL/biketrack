@@ -104,6 +104,9 @@ class LoginController < ApplicationController
                     @gears_array << JSON.parse(response.body)
                 end
             end
+            
+            #For test case
+            @gears_array << {"id"=>"b13182086", "primary"=>false, "name"=>"Vergil2", "nickname"=>"Vergil", "resource_state"=>3, "retired"=>false, "distance"=>605625, "converted_distance"=>605.6, "brand_name"=>"Triban", "model_name"=>"Rc520 105", "frame_type"=>5, "description"=>"", "weight"=>10.4}
             @gears_array ||= "--"
         end
     end
