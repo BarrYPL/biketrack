@@ -42,7 +42,8 @@
     overflow-x: hidden;
 }
 
-.gallery {
+.gallery,
+.bike-gallery {
     display: flex;
     align-items: center;
     column-gap: 20px;
@@ -52,11 +53,13 @@
     scroll-behavior: smooth;
 }
 
-.gallery::-webkit-scrollbar{
+.gallery::-webkit-scrollbar,
+.bike-gallery::-webkit-scrollbar{
     display: none;
   }
 
-.gallery-item {
+.gallery-item,
+.bike-item {
     scroll-snap-align: center;
     min-width: 100%;
     min-height: 300px;
