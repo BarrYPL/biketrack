@@ -34,8 +34,8 @@
             <div class="gallery-item" id="elem-3">
                 <h2>Your Bikes</h2>
                 <div class="bike-gallery">
-                    <% @gears_array.each do |bike| %>
-                    <div class="bike-item">
+                    <% @gears_array.each_with_index do |bike, k| %>
+                    <div class="bike-item" id="bike-elem-<%= k %>">
                         <div class="bike-card">
                             <%= image_tag "bike.png", class:"bike-icon" %>
                             <div class="bike-stats">
