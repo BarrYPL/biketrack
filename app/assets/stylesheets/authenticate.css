@@ -69,12 +69,19 @@
     border-radius: 10px;
 }
 
-.dot,
-.bike-dot {
+.dot {
     width: 10px;
     aspect-ratio: 1;
     border-radius: 50%;
     background: #73fd2e;
+    margin: 0px 10px;
+}
+
+.bike-dot {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #FB4E04;
     margin: 0px 10px;
 }
 
