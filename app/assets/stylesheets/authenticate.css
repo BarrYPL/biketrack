@@ -94,6 +94,13 @@
     min-width: 100%;
     min-height: 300px;
     height: 100%;
-    padding: 10px;
+}
+
+.bike-card{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
     border-radius: 10px;
+    padding: 10px;
 }
