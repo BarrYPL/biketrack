@@ -98,7 +98,6 @@
 
 .bike-card{
     display: flex;
-    height: 100px;
     width: 100%;
     background: rgba(0,0,0,0.3);
     border-radius: 10px;
@@ -111,4 +110,5 @@
 
 .centred{
     text-align: center;
+    margin-bottom: 10px;
 }
