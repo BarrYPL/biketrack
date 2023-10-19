@@ -54,9 +54,9 @@
                     <% end %>
                 </div>
                 <div class="bike-dots-container">
-                    <a href="#bike-elem-1"><div class="dot"></div></a>
-                    <a href="#bike-elem-2"><div class="dot"></div></a>
-                    <a href="#bike-elem-3"><div class="dot"></div></a>
+                    <% @gears_array.each_with_index do |bike, k| %>
+                        <a href="#bike-elem-<%= k+1 %>"><div class="bike-dot"></div></a>
+                    <% end %>
                 </div>
             </div>
         </div>
