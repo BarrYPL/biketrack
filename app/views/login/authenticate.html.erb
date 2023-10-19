@@ -41,9 +41,9 @@
                             <div class="bike-stats">
                                 <h3 class="centred"><span><%= bike['name'] %></span></h3>
                                 <p><span>Last mainestence date:</span> XXX</p>
-                                <p><span>KM since last mainestence:</span> XXX</p>
+                                <p><span>Km since last mainestence:</span> XXX</p>
                                 <p><span>Last chain change:</span> XXX</p>
-                                <p><span>KN since last chain change:</span> XXX</p>
+                                <p><span>Km since last chain change:</span> XXX</p>
                             </div>
                         </div>
                         <div class="bike-buttons">
@@ -87,9 +87,24 @@
         );
     }
 
+    function isBikeElementInViewport(el) {
+        const bikeGalleryRect = bikeGallery.getBoundingClientRect();
+        const bikeElementRect = el.getBoundingClientRect();
+        return (
+            elementRect.left >= galleryRect.left &&
+            elementRect.right <= galleryRect.right
+        );
+    }
+
     dotElements.forEach(function(dotElement) {
         if (dotElements.length > 0) {
             dotElements[0].style.transform = "scale(2)";
+        }
+    });
+
+    bikeDotElements.forEach(function(bikeDotElement) {
+        if (bikeDotElements.length > 0) {
+            bikeDotElements[0].style.transform = "scale(2)";
         }
     });
 
@@ -103,7 +118,19 @@
         });
     }
 
-        gallery.addEventListener("scroll", updateDotScale);
-        updateDotScale();
+    function updateBikeDotScale() {
+        bikeGalleryItems.forEach(function(bikeGalleryItem, index) {
+        if (isElementInViewport(bikeGalleryItem)) {
+            bikeDotElements[index].style.transform = "scale(2)";
+        } else {
+            bikeDotElements[index].style.transform = "scale(1)";
+        }
+        });
+    }
+
+    gallery.addEventListener("scroll", updateDotScale);
+    bikeGallery.addEventListener("scroll", updateBikeDotScale);
+    updateDotScale();
+    updateBikeDotScale();
     });
 </script>
