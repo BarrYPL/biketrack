@@ -45,6 +45,7 @@ class LoginController < ApplicationController
                 @curr_user_name = @params['athlete']['firstname']
                 @txt = "Welcome "
             end
+            
             #get user last ride info
             session[:current_user_token] = @params['access_token']
             time_now_to_link = Time.now.to_i.to_s
@@ -75,6 +76,7 @@ class LoginController < ApplicationController
             @last_ride['total_elevation_gain'] ||= "--" 
             @last_ride['average_speed'] ||= "--" 
             @last_ride['max_speed'] ||= "--"
+
             #get max values
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
                 @max_speed = (Ride.where(athlete_id: @params['athlete']['id']).order(max_speed: :desc).first[:max_speed] * 3.6).round(2) 
@@ -86,6 +88,7 @@ class LoginController < ApplicationController
             @longest_ride ||= "--"
             @max_total_elevation_gain ||= "--"
             @total_counted_kilometers ||= "--"
+
             #get all bikes
             if (Ride.where(athlete_id: @params['athlete']['id']).all.count > 0)
                 @unique_gear_ids = Ride.where(athlete_id: @params['athlete']['id']).where.not(gear_id: nil).distinct.pluck(:gear_id)
@@ -105,16 +108,15 @@ class LoginController < ApplicationController
         end
     end
     
+    private
+
     def format_time(seconds)
         hours = seconds / 3600
         minutes = (seconds % 3600) / 60
         seconds = seconds % 60
 
-        puts "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
         return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
     end
-
-    private
 
     def add_ride_to_db(params_hash)
         params_hash.each do |ride_hash|
