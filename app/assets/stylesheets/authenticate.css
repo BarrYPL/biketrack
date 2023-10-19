@@ -81,3 +81,8 @@
     width: fit-content;
     margin: auto;
 }
+
+.bike-icon {
+    height: auto;
+    width: 60%;
+}

@@ -35,9 +35,12 @@
                 <h2>Your Bikes</h2>
                 <div class="bike-gallery">
                     <% @gears_array.each do |bike| %>
+                    <div class="bike-item">
                         <h3><span><%= bike['name'] %></span></h3>
                         <%= image_tag "bike.png", class:"bike-icon" %>
+                    </div>
                     <% end %>
+                    <p><%= @gears_array %></p>
                 </div>
             </div>
         </div>
