@@ -59,7 +59,7 @@ class LoginController < ApplicationController
                 end
             else
                 page = 1
-                while (response.body.length > 100)
+                while (page < 7)
                     activities_paged_url = "https://www.strava.com/api/v3/athlete/activities?per_page=5&page=#{page}"
                     response = Excon.get(activities_paged_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
                     puts response
@@ -69,6 +69,7 @@ class LoginController < ApplicationController
                     unless response_rides.first.nil? 
                         add_ride_to_db(response_rides) 
                     end 
+                    page += 1
                 end
             end
             @last_ride_info = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
