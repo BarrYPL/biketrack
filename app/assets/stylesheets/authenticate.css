@@ -101,7 +101,6 @@
 .bike-item {
     scroll-snap-align: center;
     min-width: 100%;
-    min-height: 300px;
     height: 100%;
 }
 
