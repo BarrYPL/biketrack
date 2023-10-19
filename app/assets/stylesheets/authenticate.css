@@ -108,6 +108,12 @@
     width: 100%;
 }
 
+.bike-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .centred{
     text-align: center;
     margin-bottom: 10px;

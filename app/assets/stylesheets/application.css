@@ -78,14 +78,18 @@
     justify-content: center;
   }
 
-  .primary{
-    background: #73fd2e;
+  .primary,
+  .secondary:hover{
+    background: #73fd2eab;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     color: #FEFDF5;
     padding: 10px;
     border-radius: 10px;
   }
 
-  .secondary{
+  .secondary,
+  .primary:hover{
     background: rgba( 48, 111, 178, 0.15 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
