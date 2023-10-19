@@ -58,8 +58,7 @@
     display: none;
   }
 
-.gallery-item,
-.bike-item {
+.gallery-item{
     scroll-snap-align: center;
     min-width: 100%;
     min-height: 300px;
@@ -88,4 +87,14 @@
 .bike-icon {
     height: auto;
     width: 60%;
+}
+
+.bike-item {
+    display: flex;
+    scroll-snap-align: center;
+    min-width: 100%;
+    min-height: 300px;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
 }
