@@ -59,12 +59,13 @@ class LoginController < ApplicationController
                 end
             else
                 page = 1
-                while (page < 7)
+                loop do
                     activities_paged_url = "https://www.strava.com/api/v3/athlete/activities?per_page=5&page=#{page}"
                     response = Excon.get(activities_paged_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
-                    puts response.body.class
                     response_rides = JSON.parse(response.body)
-                    puts response_rides.class
+                    if response_rides.count == 0
+                        break
+                    end
                     unless response_rides.first.nil? 
                         add_ride_to_db(response_rides) 
                     end 
@@ -133,7 +134,6 @@ class LoginController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
-        puts params_hash
         params_hash.each do |ride_hash|
             unless Ride.exists?(ride_id: ride_hash['id'])
                 Ride.create!(
