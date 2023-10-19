@@ -51,12 +51,25 @@ class LoginController < ApplicationController
             time_now_to_link = Time.now.to_i.to_s
             if Ride.where(athlete_id: @params['athlete']['id']).count > 0
                 time_after = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first[:timestamp]
-            end
-            activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=5"
-            response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
-            response_rides = JSON.parse(response.body)
-            unless response_rides.first.nil? 
-                add_ride_to_db(response_rides) 
+                activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=5"
+                response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
+                response_rides = JSON.parse(response.body)
+                unless response_rides.first.nil? 
+                    add_ride_to_db(response_rides) 
+                end
+            else
+                page = 1
+                while (response.length > 0)
+                    activities_paged_url = "https://www.strava.com/api/v3/athlete/activities?per_page=5&page=#{page}"
+                    response = Excon.get(activities_paged_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
+                    puts response
+                    puts response.class
+                    response_rides = JSON.parse(response.body)
+                    puts response_rides.class
+                    unless response_rides.first.nil? 
+                        add_ride_to_db(response_rides) 
+                    end 
+                end
             end
             @last_ride_info = Ride.where(athlete_id: @params['athlete']['id']).order(timestamp: :desc).first
             @last_ride = Hash.new()
@@ -105,8 +118,6 @@ class LoginController < ApplicationController
                 end
             end
             
-            #For test case
-            @gears_array << {"id"=>"b13182086", "primary"=>false, "name"=>"Vergil2", "nickname"=>"Vergil", "resource_state"=>3, "retired"=>false, "distance"=>605625, "converted_distance"=>605.6, "brand_name"=>"Triban", "model_name"=>"Rc520 105", "frame_type"=>5, "description"=>"", "weight"=>10.4}
             @gears_array ||= "--"
         end
     end
