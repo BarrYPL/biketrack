@@ -135,6 +135,7 @@ class LoginController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
+        puta params_hash
         params_hash.each do |ride_hash|
             unless Ride.exists?(ride_id: ride_hash['id'])
                 Ride.create!(
