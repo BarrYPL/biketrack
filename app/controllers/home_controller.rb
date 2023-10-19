@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-    unless session[:current_user_token].nil?
+    unless session.empty?
         redirect_to after_login
     end
 end
