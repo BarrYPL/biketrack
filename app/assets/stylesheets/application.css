@@ -97,3 +97,9 @@
     padding: 10px;
     border-radius: 10px;
   }
+
+  .primary:hover,
+  .secondary:hover {
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+  }
