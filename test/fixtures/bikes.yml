@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  brand: MyString
+  user_info_id: 1
+  bike_id: MyString
+  primary: false
+  resource_state: 1
+  distance: 1.5
+  brand_name: MyString
+  model_name: MyString
+  frame_type: 1
+  description: MyText
+
+two:
+  name: MyString
+  brand: MyString
+  user_info_id: 1
+  bike_id: MyString
+  primary: false
+  resource_state: 1
+  distance: 1.5
+  brand_name: MyString
+  model_name: MyString
+  frame_type: 1
+  description: MyText
