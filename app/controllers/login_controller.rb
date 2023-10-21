@@ -10,13 +10,7 @@ class LoginController < ApplicationController
         if (@params.has_key?("message"))
             redirect_to homepage_url
         else
-            if UserInfo.exists?(athlete_id: @params["athlete"]["id"])
-                @txt = "Hello again "
-                @curr_user_name = @params["athlete"]["firstname"]
-                @athlete_city = @params["athlete"]["city"]
-                puts UserInfo.where(athlete_id: @params["athlete"]["id"])
-                #@athlete_profile = UserInfo.where(athlete_id: @params["athlete"]["id"])["user_profile"]
-            else
+            unless UserInfo.exists?(athlete_id: @params["athlete"]["id"])
                 UserInfo.create!(
                     token_type: @params['token_type'],
                     expires_at: @params['expires_at'],
@@ -45,7 +39,6 @@ class LoginController < ApplicationController
                     athlete_follower_id: @params['athlete']['follower']
                 )
                 @curr_user_name = @params['athlete']['firstname']
-                @txt = "Welcome "
             end
             session[:current_user_token] = @params['access_token']
             session[:current_user_id] = @params["athlete"]["id"]

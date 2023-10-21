@@ -1,6 +1,8 @@
 class UserProfileController < ApplicationController
     def index
         if UserInfo.exists?(athlete_id: session[:current_user_id])
+            @user = UserInfo.find_by(athlete_id: session[:current_user_id])
+
             #get user last ride info
             time_now_to_link = Time.now.to_i.to_s
             if Ride.where(athlete_id: session[:current_user_id]).count > 0

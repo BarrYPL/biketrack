@@ -2,15 +2,11 @@
 <p>Im inside of if statement - yes I am checking it on production.</p>
 <div class="profile-card">
     <div class="profile-title">
-        <h2>
-            <%= @txt %>
-            <%= @curr_user_name %>
-        </h2>
-        <p>
-            <%= @athlete_city %>
-        </p>
+        <h2>Welcome <%= @user['athlete_firstname'] %></h2>
+        <p><%= @user['athlete_city'] %></p>
     </div>
- </div>
+    <%= image_tag @user['athlete_profile'], class:"profile-img" %>
+</div>
 <div class="stat-container">
     <div class="gallery">
         <div class="gallery-item" id="elem-1">
