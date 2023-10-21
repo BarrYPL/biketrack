@@ -14,7 +14,7 @@ class LoginController < ApplicationController
                 @txt = "Hello again "
                 @curr_user_name = @params["athlete"]["firstname"]
                 @athlete_city = @params["athlete"]["city"]
-                @athlete_profile = UserInfo.wehre(athlete_id: @params["athlete"]["id"])["user_profile"]
+                @athlete_profile = UserInfo.where(athlete_id: @params["athlete"]["id"])["user_profile"]
             else
                 UserInfo.create!(
                     token_type: @params['token_type'],
