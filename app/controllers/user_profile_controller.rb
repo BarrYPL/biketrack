@@ -6,7 +6,7 @@ class UserProfileController < ApplicationController
             if Ride.where(athlete_id: session[:current_user_id]).count > 0
                 time_after = Ride.where(athlete_id: session[:current_user_id]).order(timestamp: :desc).first[:timestamp]
                 activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=5"
-                response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
+                response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
                 response_rides = JSON.parse(response.body)
                 unless response_rides.first.nil? 
                     add_ride_to_db(response_rides) 
@@ -15,7 +15,7 @@ class UserProfileController < ApplicationController
                 page = 1
                 loop do
                     activities_paged_url = "https://www.strava.com/api/v3/athlete/activities?per_page=50&page=#{page}"
-                    response = Excon.get(activities_paged_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
+                    response = Excon.get(activities_paged_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
                     response_rides = JSON.parse(response.body)
                     if response_rides.count == 0
                         break
@@ -70,7 +70,7 @@ class UserProfileController < ApplicationController
                 @gears_array = []
                 @unique_gear_ids.each do |gear|
                     gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
-                    response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{@params['access_token']}"})
+                    response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
                     @gears_array << JSON.parse(response.body)
                 end
             end
