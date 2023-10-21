@@ -1,0 +1,139 @@
+<h1>User Profile</h1>
+<% if @params.present? %>
+    <div class="profile-card">
+        <div class="profile-title">
+            <h2>
+                <%= @txt %>
+                <%= @curr_user_name %>
+            </h2>
+            <p>
+                <%= @athlete_city %>
+            </p>
+        </div>
+        <%= image_tag @params['athlete']['profile'], class:"profile-img" %>
+    </div>
+    <div class="stat-container">
+        <div class="gallery">
+            <div class="gallery-item" id="elem-1">
+                <h2>Your last ride</h2>
+                <h3><span>Name:</span> <%= @last_ride['name'] %></h3>
+                <p><span>Date:</span><%= @last_ride['timestamp'] %></p>
+                <p><span>Distance:</span> <%= @last_ride['distance'] %> km</p>
+                <p><span>Moving Time:</span> <%= @last_ride['moving_time'] %></p>
+                <p><span>Elevation:</span> <%= @last_ride['total_elevation_gain'] %> m</p>
+                <p><span>Avg. Speed:</span> <%= @last_ride['average_speed'] %> km/h</p>
+                <p><span>Max. Speed:</span> <%= @last_ride['max_speed'] %> km/h</p>
+            </div>
+            <div class="gallery-item" id="elem-2">
+                <h2>Your top stats</h2>
+                <p><span>Total Max. Speed:</span> <%= @max_speed %> km/h</p>
+                <p><span>Longest Ride Ever:</span> <%= @longest_ride %> km</p>
+                <p><span>Max Ride Elevation:</span> <%= @max_total_elevation_gain %> m</p>
+                <p><span>Total Kilometers:</span> <%= @total_counted_kilometers %> km</p>
+                <p><span>Total Rides:</span> <%= @total_rides %></p>
+            </div>
+            <div class="gallery-item" id="elem-3">
+                <h2>Your Bikes</h2>
+                <div class="bike-gallery">
+                    <% @gears_array.each_with_index do |bike, k| %>
+                    <div class="bike-item" id="bike-elem-<%= k+1 %>">
+                        <div class="bike-card">
+                            <%= image_tag "bike.png", class:"bike-icon" %>
+                            <div class="bike-stats">
+                                <h3 class="centred"><span><%= bike['name'] %></span></h3>
+                                <p><span>Last mainestence date:</span> XXX</p>
+                                <p><span>Km since last mainestence:</span> XXX</p>
+                                <p><span>Last chain change:</span> XXX</p>
+                                <p><span>Km since last chain change:</span> XXX</p>
+                                <p><span>Last chain waxing:</span> XXX</p>
+                                <p><span>Km since last chain waxing:</span> XXX</p>
+                            </div>
+                        </div>
+                        <div class="bike-buttons">
+                            <button class="primary">Mainestence</button>
+                            <button class="secondary">Change chain</button>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="bike-dots-container">
+                    <% @gears_array.each_with_index do |bike, k| %>
+                        <a href="#bike-elem-<%= k+1 %>"><div class="bike-dot"></div></a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="dots-container">
+            <a href="#elem-1"><div class="dot"></div></a>
+            <a href="#elem-2"><div class="dot"></div></a>
+            <a href="#elem-3"><div class="dot"></div></a>
+        </div>
+    </div>
+<% end %>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const dotElements = document.querySelectorAll(".dot");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+    const gallery = document.querySelector(".gallery");
+
+    const bikeDotElements = document.querySelectorAll(".bike-dot");
+    const bikeGalleryItems = document.querySelectorAll(".bike-item");
+    const bikeGallery = document.querySelector(".bike-gallery");
+
+    function isElementInViewport(el) {
+        const galleryRect = gallery.getBoundingClientRect();
+        const elementRect = el.getBoundingClientRect();
+        return (
+            elementRect.left >= galleryRect.left &&
+            elementRect.right <= galleryRect.right
+        );
+    }
+
+    function isBikeElementInViewport(el) {
+        const bikeGalleryRect = bikeGallery.getBoundingClientRect();
+        const bikeElementRect = el.getBoundingClientRect();
+        return (
+            elementRect.left >= galleryRect.left &&
+            elementRect.right <= galleryRect.right
+        );
+    }
+
+    dotElements.forEach(function(dotElement) {
+        if (dotElements.length > 0) {
+            dotElements[0].style.transform = "scale(2)";
+        }
+    });
+
+    bikeDotElements.forEach(function(bikeDotElement) {
+        if (bikeDotElements.length > 0) {
+            bikeDotElements[0].style.transform = "scale(2)";
+        }
+    });
+
+    function updateDotScale() {
+        galleryItems.forEach(function(galleryItem, index) {
+        if (isElementInViewport(galleryItem)) {
+            dotElements[index].style.transform = "scale(2)";
+        } else {
+            dotElements[index].style.transform = "scale(1)";
+        }
+        });
+    }
+
+    function updateBikeDotScale() {
+        bikeGalleryItems.forEach(function(bikeGalleryItem, index) {
+        if (isElementInViewport(bikeGalleryItem)) {
+            bikeDotElements[index].style.transform = "scale(2)";
+        } else {
+            bikeDotElements[index].style.transform = "scale(1)";
+        }
+        });
+    }
+
+    gallery.addEventListener("scroll", updateDotScale);
+    bikeGallery.addEventListener("scroll", updateBikeDotScale);
+    updateDotScale();
+    updateBikeDotScale();
+    });
+</script>
