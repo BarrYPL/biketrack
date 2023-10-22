@@ -24,6 +24,7 @@ class ChainsController < ApplicationController
   def create
     @bike = Bike.find_by(id: params['chain']['bike'])
     params['chain']['bike'] = @bike
+    puts params
     @chain = Chain.new(chain_params)
     respond_to do |format|
       if @chain.save
