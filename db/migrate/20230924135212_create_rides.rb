@@ -1,7 +1,7 @@
 class CreateRides < ActiveRecord::Migration[7.0]
   def change
     create_table :rides do |t|
-      t.string :name
+      t.string :ride_name
       t.float :distance
       t.integer :athlete_id
       t.integer :moving_time

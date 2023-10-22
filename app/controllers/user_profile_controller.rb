@@ -105,7 +105,7 @@ class UserProfileController < ApplicationController
         unless Bike.exists?(bike_id: params_hash['id'])
             Bike.create!(
                 bike_id: params_hash['id'],
-                name: params_hash['name'],
+                bike_name: params_hash['name'],
                 brand: params_hash['brand_name'],
                 user_info_id: session[:current_user_id],
                 resource_state: params_hash['resource_state'],
@@ -121,7 +121,7 @@ class UserProfileController < ApplicationController
         params_hash.each do |ride_hash|
             unless Ride.exists?(ride_id: ride_hash['id'])
                 Ride.create!(
-                    name: ride_hash['name'],
+                    ride_name: ride_hash['name'],
                     distance: ride_hash['distance'],
                     athlete_id: ride_hash['athlete']['id'],
                     moving_time: ride_hash['moving_time'],

@@ -1,7 +1,7 @@
 class CreateBikes < ActiveRecord::Migration[7.0]
   def change
     create_table :bikes do |t|
-      t.string :name
+      t.string :bike_name
       t.string :brand
       t.integer :user_info_id
       t.string :bike_id
