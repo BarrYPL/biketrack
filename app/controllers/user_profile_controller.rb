@@ -113,7 +113,7 @@ class UserProfileController < ApplicationController
                 bike_model_name: params_hash['model_name'],
                 frame_type: params_hash['frame_type'],
                 description: params_hash['description']
-            )
+            ), UserInfo: UserInfo.find_by(id: session[:current_user_id])
         end
     end
 
