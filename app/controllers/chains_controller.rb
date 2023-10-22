@@ -1,6 +1,6 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index ]
+  before_action :set_bike, only: [:index, :new ]
 
   # GET /chains or /chains.json
   def index
