@@ -8,7 +8,7 @@
     <div class="bike-stats">
       <p><span>Brand: </span><%= @bike['brand'] %></p>
       <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
-      <p><span>Total dist: </span><%= (@bike['distance'].to_f / 1000.0).round(2) %></p>
+      <p><span>Total dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
     </div>
   </div>
 </div>
