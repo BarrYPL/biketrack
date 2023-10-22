@@ -10,6 +10,26 @@
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= form.label :chain_name %>
+    <%= form.text_field :chain_name, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :vaxed_timestamp %>
+    <%= form.datetime_field :vaxed_timestamp, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :changed_timestamp %>
+    <%= form.datetime_field :changed_timestamp, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :kmoffset %>
+    <%= form.number_field :kmoffset, class: "form-control" %>
+  </div>
   
   <div>
     <%= form.submit "Add", class: "primary" %>
