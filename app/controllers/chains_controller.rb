@@ -23,10 +23,9 @@ class ChainsController < ApplicationController
   # POST /chains or /chains.json
   def create
     @chain = Chain.new(chain_params)
-    #puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: #{@chain}"
     respond_to do |format|
       if @chain.save
-        format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created." }
+        #format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created." }
         format.json { render :show, status: :created, location: @chain }
       else
         format.html { render :new, status: :unprocessable_entity }
