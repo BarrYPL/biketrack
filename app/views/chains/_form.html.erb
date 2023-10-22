@@ -27,7 +27,7 @@
   </div>
   
   <div>
-    <%= form.hidden_field "bike", "123" %>
+    <%= form.hidden_field "bike", bike: @bike['bike_id'] %>
     <%= form.submit "Add", class: "primary" %>
   </div>
 <% end %>
