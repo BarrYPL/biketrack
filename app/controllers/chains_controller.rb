@@ -1,6 +1,6 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index, :new, :create]
+  before_action :set_bike, only: [:index, :new]
 
   # GET /chains or /chains.json
   def index
@@ -22,7 +22,7 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{params['bike']}"
+    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{params['chain']['bike']}"
     @chain = @bike.chains.build(chain_params)
     respond_to do |format|
       if @chain.save
