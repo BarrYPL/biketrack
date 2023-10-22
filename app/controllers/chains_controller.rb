@@ -1,6 +1,6 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index, :new]
+  before_action :set_bike, only: [:index, :new, :create]
 
   # GET /chains or /chains.json
   def index
@@ -23,7 +23,7 @@ class ChainsController < ApplicationController
   # POST /chains or /chains.json
   def create
     @chain = Chain.new(chain_params)
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: #{@chain}"
+    #puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx: #{@chain}"
     respond_to do |format|
       if @chain.save
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created." }
