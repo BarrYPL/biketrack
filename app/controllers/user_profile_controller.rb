@@ -31,7 +31,7 @@ class UserProfileController < ApplicationController
             @last_ride_info = Ride.where(athlete_id: session[:current_user_id]).order(timestamp: :desc).first
             @last_ride = Hash.new()
             unless @last_ride_info.nil?
-                @last_ride['name'] = @last_ride_info['name']
+                @last_ride['name'] = @last_ride_info['ride_name']
                 @last_ride['timestamp'] = Time.at(@last_ride_info['timestamp']).strftime("%A, %B %d, %Y")
                 @last_ride['distance'] = (@last_ride_info['distance'].to_f / 1000.0).round(2)
                 @last_ride['moving_time'] = format_time(@last_ride_info['moving_time'])
