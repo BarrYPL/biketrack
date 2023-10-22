@@ -102,9 +102,7 @@ class UserProfileController < ApplicationController
     end
 
     def add_bike_to_db(params_hash)
-        params_hash.each do |bike_hash|
-            puts bike_hash
-        end
+        puts params_hash
     end
 
     def add_ride_to_db(params_hash)
