@@ -26,7 +26,7 @@ class ChainsController < ApplicationController
     puts params
     respond_to do |format|
       if @chain.save
-        format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created." }
+        format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike_id: @bike['bike_id'] }
         format.json { render :show, status: :created, location: @chain }
       else
         format.html { render :new, status: :unprocessable_entity }
