@@ -22,9 +22,7 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
-    @bike = Bike.find_by(id: params['chain']['bike'])
     @chain = Chain.new(chain_params)
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{@chain}"
     respond_to do |format|
       if @chain.save
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @bike['bike_id'] }
@@ -74,6 +72,7 @@ class ChainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chain_params
-      params.require(:chain).permit(:chain_name, :chain_model, :vaxed_timestamp, :changed_timestamp, :kmoffset, :bike)
+      @bike = Bike.find_by(id: params['chain']['bike'])
+      params.require(:chain).permit(:chain_name, :chain_model, :vaxed_timestamp, :changed_timestamp, :kmoffset, :bike = @bike)
     end
 end
