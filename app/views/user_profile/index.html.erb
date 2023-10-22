@@ -59,14 +59,12 @@
                             <%= image_tag "bike.png" , class:"bike-icon" %>
                                 <div class="bike-stats">
                                     <h3 class="centred"><span><%= bike['name'] %></span></h3>
-                                    <p><span>Current chain:</span> Chain card</p>
                                     <p><span>Last mainestence date:</span> XXX</p>
                                     <p><span>Km since last mainestence:</span> XXX</p>
-                                    <p><span>Last chain change:</span> XXX</p>
-                                    <p><span>Km since last chain change:</span> XXX</p>
-                                    <p><span>Last chain waxing:</span> XXX</p>
-                                    <p><span>Km since last chain waxing:</span> XXX</p>
-
+                                    <div class="chain-card">
+                                        <div class="chain-model"><h2>KMC X11</h2></div>
+                                        <div class="chain-stats"><p>Since: dd-mm-rrr</p> <p>xx km</p></div>
+                                    </div>
                                 </div>
                         </div>
                         <div class="bike-buttons">
@@ -81,7 +79,7 @@
                     <a href="#bike-elem-<%= k+1 %>">
                         <div class="bike-dot"></div>
                     </a>
-                    <% end %>
+                <% end %>
             </div>
         </div>
     </div>
