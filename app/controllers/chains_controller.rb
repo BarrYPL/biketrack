@@ -3,6 +3,7 @@ class ChainsController < ApplicationController
 
   # GET /chains or /chains.json
   def index
+    @bike = params['bike_id']
     @chains = Chain.all
   end
 
