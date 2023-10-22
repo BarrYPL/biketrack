@@ -3,7 +3,7 @@ class ChainsController < ApplicationController
 
   # GET /chains or /chains.json
   def index
-    @bike = params['bike_id']
+    @bike = Bike.find_by(id: params['bike'])
     @chains = Chain.all
   end
 
