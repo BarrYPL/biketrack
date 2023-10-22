@@ -110,7 +110,7 @@ class UserProfileController < ApplicationController
                 user_info_id: session[:current_user_id],
                 resource_state: params_hash['resource_state'],
                 distance: params_hash['distance'],
-                model_name: params_hash['model_name'],
+                bike_model_name: params_hash['model_name'],
                 frame_type: params_hash['frame_type'],
                 description: params_hash['description']
             )

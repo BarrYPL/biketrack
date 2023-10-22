@@ -9,7 +9,7 @@ class CreateBikes < ActiveRecord::Migration[7.0]
       t.integer :resource_state
       t.float :distance
       t.string :brand_name
-      t.string :model_name
+      t.string :bike_model_name
       t.integer :frame_type
       t.text :description, default: "Default Bike."
       t.timestamps
