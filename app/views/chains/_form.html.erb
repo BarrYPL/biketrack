@@ -1,4 +1,4 @@
-<%= form_with(model: chain) do |form| %>
+<%= form_with(model: chain, class: "new-chain-form") do |form| %>
   <% if chain.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(chain.errors.count, "error") %> prohibited this chain from being saved:</h2>
@@ -22,7 +22,7 @@
   </div>
 
   <div>
-    <span></span><%= form.label :vaxed_timestamp %></span>
+    <span><%= form.label :vaxed_timestamp %></span>
     <%= form.datetime_field :vaxed_timestamp, class: "form-control" %>
   </div>
 
