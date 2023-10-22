@@ -7,4 +7,13 @@
 .form-field {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.form-field input {
+    width: 170px;
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }
