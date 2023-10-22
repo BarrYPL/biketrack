@@ -29,4 +29,6 @@
   <% end %>
 </div>
 
-<a href="chains/new?bike=<%= @bike['bike_id'] %>"><button class="primary">New Chain</button></a>
+<% if @bike%>
+  <a href="chains/new?bike=<%= @bike['bike_id'] %>"><button class="primary">New Chain</button></a>
+<% end %>
