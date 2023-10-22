@@ -1,12 +1,12 @@
 <div id="<%= dom_id chain %>" class="chain-card" >
     <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= @chain['chain_name'] %></h2></div>
     <% unless @chain['changed_timestamp'].nil? %>
-    <div class="chain-stats">
-        <div class="chain-stat"><span>Chain Model:</span><p><%= @chain['chain_model'] %></p></div>
+    <div class="view-chain-stats">
+        <div class="chain-stat"><span>Chain Model: </span><p><%= @chain['chain_model'] %></p></div>
         <div class="chain-stat"><span>Used Since: </span><p><%= @chain['changed_timestamp'] %></p></div>
         <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
-        <div class="chain-stat"><span>Vaxed:</span><p><%= @chain['vaxed_timestamp'] %></p></div>
-        <div class="chain-stat"><span>Offset:</span><p><%= @chain['kmoffset'] %></p></div>
+        <div class="chain-stat"><span>Vaxed: </span><p><%= @chain['vaxed_timestamp'] %></p></div>
+        <div class="chain-stat"><span>Offset: </span><p><%= @chain['kmoffset'] %></p></div>
     </div>
     <% end %>
 </div>
