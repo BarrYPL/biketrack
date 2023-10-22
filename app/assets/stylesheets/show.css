@@ -3,3 +3,7 @@
     flex-direction: column;
     color: #121212;
 }
+
+.chain-stat span {
+    color: #121212;
+}

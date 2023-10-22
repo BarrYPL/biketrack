@@ -2,9 +2,9 @@
 
 <%= render @chain %>
 
-<div>
-  <%= link_to "Edit this chain", edit_chain_path(@chain) %> |
-  <%= link_to "Back to chains", chains_path %>
+<div class="chain-options">
+  <%= link_to "Edit this chain", edit_chain_path(@chain), class: "primary" %> |
+  <%= link_to "Back to chains", chains_path, class: "secondary" %>
 
-  <%= button_to "Destroy this chain", @chain, method: :delete %>
+  <%= button_to "Destroy this chain", @chain, method: :delete, class: "primary" %>
 </div>
