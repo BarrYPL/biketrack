@@ -1,2 +1,9 @@
-<div id="<%= dom_id chain %>">
+<div id="<%= dom_id chain %>" class="chain-card" >
+    <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= @chain['chain_name'] %></h2></div>
+    <% unless @chain['changed_timestamp'].nil? %>
+    <div class="chain-stats">
+        <div class="chain-stat"><span>Since: </span><p><%= @chain['changed_timestamp'] %></p></div>
+        <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
+    </div>
+    <% end %>
 </div>
