@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Chains</h1>
+<% if @bike%>
 <div class="chains-bike-card">
   <h2 class="centred"><%= @bike['bike_name'] %></h2>
   <div class="bike-content">
@@ -13,6 +14,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <div id="chains">
   <% if @chains.empty? %>
