@@ -21,7 +21,7 @@
     <% @chains.each do |chain| %>
       <%= render chain %>
       <p>
-       <%= link_to "Show this chain", chain %>
+       <%= link_to chain['chain_name'], chain %>
       </p>
     <% end %>
   <% end %>
