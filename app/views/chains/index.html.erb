@@ -9,13 +9,14 @@
       <p><span>Brand: </span><%= @bike['brand'] %></p>
       <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
       <p><span>Total dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
+      <p><span>Vax Exploatation:</span> xx %</p>
     </div>
   </div>
 </div>
 
 <div id="chains">
   <% if @chains.empty? %>
-    <p>This bike has no chains added yet.</p>
+  <div class="alert-div"><p>This bike has no chains added yet.</p></div>
   <% else %>
     <% @chains.each do |chain| %>
       <%= render chain %>
@@ -26,4 +27,4 @@
   <% end %>
 </div>
 
-<a href="chains/new"><button class="primary">New Chain</button></a>
+<a href="chains/new?bike=<%= @bike['bike_id'] %>"><button class="primary">New Chain</button></a>
