@@ -2,9 +2,11 @@
 
 <%= render "form", chain: @chain %>
 
-<br>
+<div class="chain-options">
+  <div class="main-options">
+    <%= link_to "Edit Chain", edit_chain_path(@chain), class: "primary" %>
+    <%= button_to "Delete Chain", @chain, method: :delete, class: "secondary" %>
+  </div>
 
-<div>
-  <%= link_to "Show this chain", @chain %> |
-  <%= link_to "Back to chains", chains_path %>
+  <a href="/chains?bike=<%= @chain['bike_id'] %>"><button class="primary">Back to chains</button></a>
 </div>
