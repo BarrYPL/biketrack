@@ -137,6 +137,10 @@
     display: flex;
 }
 
+.chain-stat:nth-child(2) {
+    margin-left: 5px;
+}
+
 .chain-stats span {
     font-weight: bold;
     color: #121212;
