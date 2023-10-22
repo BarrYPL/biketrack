@@ -22,8 +22,9 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{@chain}"
+    @bike = Bike.find_by(id: params['chain']['bike'])
     @chain = Chain.new(chain_params)
+    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{@chain}"
     respond_to do |format|
       if @chain.save
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @bike['bike_id'] }
