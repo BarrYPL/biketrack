@@ -19,10 +19,16 @@
   <div class="alert-div"><p>This bike has no chains added yet.</p></div>
   <% else %>
     <% @chains.each do |chain| %>
-      <%= render chain %>
-      <p>
-       <%= link_to chain['chain_name'], chain %>
-      </p>
+    <%= render chain %>
+    <%= link_to chain do %>
+      <div class="chain-card">
+        <div class="chain-model"><h2><i class="fa-solid fa-link"></i> KMC X11</h2></div>
+        <div class="chain-stats">
+            <div class="chain-stat"><span>Since: </span><p>dd-mm-rrr</p></div>
+            <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
+        </div>
+      </div>
+    <% end %>
     <% end %>
   <% end %>
 </div>
