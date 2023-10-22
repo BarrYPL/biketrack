@@ -26,8 +26,16 @@
     <%= form.number_field :kmoffset, class: "form-control" %>
   </div>
   
+  <div class="form-group">
+  <%= form.label :bike_id %>
+  <%= form.select(
+    :bike_id,
+    options_for_select(Bike.all.map { |a| [a.bike_name, a.id] }, chain.bike_id),
+    {},
+    class: 'form-control') %>
+</div>
+
   <div>
-    <%= form.hidden_field :bike, value: @bike['id'] %>
     <%= form.submit "Add", class: "primary" %>
   </div>
 <% end %>
