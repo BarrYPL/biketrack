@@ -72,7 +72,8 @@
                         </div>
                         <div class="bike-buttons">
                             <button class="primary">Mainestence</button>
-                            <a href="chains?bike=<%= bike['bike_id'] %>"></a><button class="secondary">Change chain</button>
+                            <p><%= bike.class %></p>
+                            <a href="chains?bike=<%= bike['bike_id'] %>"><button class="secondary">Change chain</button></a>
                         </div>
                     </div>
                 <% end %>
