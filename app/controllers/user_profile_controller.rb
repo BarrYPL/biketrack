@@ -102,7 +102,19 @@ class UserProfileController < ApplicationController
     end
 
     def add_bike_to_db(params_hash)
-        puts params_hash
+        unless Bike.exists?(bike_id: params_hash['id'])
+            Bike.create!(
+                bike_id: params_hash['id'],
+                name: params_hash['name'],
+                brand: params_hash['brand_name'],
+                user_info_id: session[:current_user_id],
+                resource_state: params_hash['resource_state'],
+                distance: params_hash['distance'],
+                model_name: params_hash['model_name'],
+                frame_type: params_hash['frame_type'],
+                description: params_hash['description']
+            )
+        end
     end
 
     def add_ride_to_db(params_hash)
