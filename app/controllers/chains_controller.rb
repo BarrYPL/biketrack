@@ -22,6 +22,7 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
+    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{chain}"
     @chain = Chain.new(chain_params)
     respond_to do |format|
       if @chain.save
