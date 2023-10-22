@@ -22,9 +22,7 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
-    puts @bike
-    @chain = Chain.new(chain_params)
-    puts params
+    @chain = @bike.chains.build(chain_params)
     respond_to do |format|
       if @chain.save
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @bike['bike_id'] }
