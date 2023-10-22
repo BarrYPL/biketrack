@@ -1,4 +1,4 @@
 class Bike < ApplicationRecord
-    belongs_to :userInfo
+    belongs_to :user_info
     has_many :chains
 end

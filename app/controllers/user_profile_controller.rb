@@ -103,8 +103,17 @@ class UserProfileController < ApplicationController
 
     def add_bike_to_db(params_hash)
         unless Bike.exists?(bike_id: params_hash['id'])
-            @user = UserInfo.find_by(athlete_id: session[:current_user_id])
-            puts @user
+            UserInfo.find_by(athlete_id: session[:current_user_id]).bikes.create!(
+                bike_id: params_hash['id'],
+                bike_name: params_hash['name'],
+                brand: params_hash['brand_name'],
+                user_info_id: session[:current_user_id],
+                resource_state: params_hash['resource_state'],
+                distance: params_hash['distance'],
+                bike_model_name: params_hash['model_name'],
+                frame_type: params_hash['frame_type'],
+                description: params_hash['description']
+            )
         end
     end
 
