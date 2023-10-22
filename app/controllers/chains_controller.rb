@@ -23,7 +23,7 @@ class ChainsController < ApplicationController
   # POST /chains or /chains.json
   def create
     @chain = Chain.new(chain_params)
-
+    puts @chain
     respond_to do |format|
       if @chain.save
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created." }
