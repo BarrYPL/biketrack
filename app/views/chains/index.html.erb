@@ -14,12 +14,16 @@
 </div>
 
 <div id="chains">
-  <% @chains.each do |chain| %>
-    <%= render chain %>
-    <p>
-      <%= link_to "Show this chain", chain %>
-    </p>
+  <% if @chains.empty? %>
+    <p>This bike has no chains added yet.</p>
+  <% else %>
+    <% @chains.each do |chain| %>
+      <%= render chain %>
+      <p>
+       <%= link_to "Show this chain", chain %>
+      </p>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "New chain", new_chain_path %>
+<%= link_to <button class="primary">New Chain</button>, new_chain_path %>
