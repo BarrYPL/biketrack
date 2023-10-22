@@ -73,6 +73,6 @@ class ChainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chain_params
-      params.fetch(:chain, {})
+      params.fetch(:chain, {}).permit(:chain_name, :chain_model, :vaxed_timestamp, :changed_timestamp, :kmoffset)
     end
 end
