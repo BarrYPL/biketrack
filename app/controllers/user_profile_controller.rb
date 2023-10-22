@@ -74,7 +74,9 @@ class UserProfileController < ApplicationController
                     unless Bike.find_by(bike_id: gear)
                         gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
                         response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
-                        @gears_array << JSON.parse(response.body)
+                        response_bike = JSON.parse(response.body)
+                        add_bike_to_db(response_bike)
+                        @gears_array << response_bike
                     else
                         @gears_array << Bike.find_by(bike_id: gear)
                     end
