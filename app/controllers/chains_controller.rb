@@ -3,7 +3,6 @@ class ChainsController < ApplicationController
 
   # GET /chains or /chains.json
   def index
-    puts params['bike']
     @bike = Bike.find_by(id: params['bike'])
     @chains = Chain.all
   end

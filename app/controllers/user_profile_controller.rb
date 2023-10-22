@@ -71,9 +71,13 @@ class UserProfileController < ApplicationController
             unless (@unique_gear_ids.empty?)
                 @gears_array = []
                 @unique_gear_ids.each do |gear|
-                    gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
-                    response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
-                    @gears_array << JSON.parse(response.body)
+                    unless Bike.find_by(bike_id: gear)
+                        gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
+                        response = Excon.get(gears_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
+                        @gears_array << JSON.parse(response.body)
+                    else
+                        @gears_array << Bike.find_by(bike_id: gear)
+                    end
                 end
             end
             
@@ -93,6 +97,12 @@ class UserProfileController < ApplicationController
         seconds = seconds % 60
 
         return "#{format('%02d', hours)}:#{format('%02d', minutes)}:#{format('%02d', seconds)}"
+    end
+
+    def add_bike_to_db(params_hash)
+        params_hash.each do |bike_hash|
+            puts bike_hash
+        end
     end
 
     def add_ride_to_db(params_hash)
