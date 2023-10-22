@@ -5,4 +5,18 @@
 .bike-description {
     display: flex;
     margin-left: 20px;
+    flex-direction: column;
+}
+
+.bike-content {
+    display: flex;
+}
+
+.chains-bike-card {
+    display: flex;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    flex-direction: column;
 }
