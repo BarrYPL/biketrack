@@ -152,6 +152,7 @@
     align-items: center;
     border: solid 2px;
     border-radius: 15px;
+    background: #f1f1f1bf;
     -webkit-box-shadow: 0px 0px 50px 5px rgba(159, 164, 226, 1);
     -moz-box-shadow: 0px 0px 50px 5px rgba(159, 164, 226, 1);
     box-shadow: 0px 0px 50px 5px rgba(159, 164, 226, 1);
