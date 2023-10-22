@@ -1,0 +1,5 @@
+.view-chain-stats {
+    display: flex;
+    flex-direction: column;
+    color: #121212;
+}
