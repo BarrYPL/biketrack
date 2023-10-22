@@ -1,9 +1,9 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
+  before_action :set_bike, only: [:index, :new]
 
   # GET /chains or /chains.json
   def index
-    @bike = Bike.find_by(bike_id: params['bike'])
     @chains = Chain.all
   end
 
@@ -62,6 +62,10 @@ class ChainsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_chain
       @chain = Chain.find(params[:id])
+    end
+
+    def set_bike
+      @bike = Bike.find_by(bike_id: params['bike'])
     end
 
     # Only allow a list of trusted parameters through.
