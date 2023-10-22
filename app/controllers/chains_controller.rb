@@ -22,7 +22,7 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
-    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx #{params['chain']['bike']}"
+    @bike = Bike.find_by(bike_id: params['chain']['bike'])
     @chain = @bike.chains.build(chain_params)
     respond_to do |format|
       if @chain.save
@@ -67,7 +67,7 @@ class ChainsController < ApplicationController
     def set_bike
       @bike = Bike.find_by(bike_id: params['bike'])
       if @bike.nil?
-        #redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
+        redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
       end
     end
 
