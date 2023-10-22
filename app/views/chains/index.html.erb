@@ -6,9 +6,9 @@
   <div class="bike-content">
     <%= image_tag "bike.png" , class:"bike-icon" %>
     <div class="bike-stats">
-      <p><span>Brand: </span>@bike['brand_name']</p>
-      <p><span>Model: </span>@bike['bike_model_name']</p>
-      <p><span>Total dist: </span>@bike['distance']</p>
+      <p><span>Brand: </span><%= @bike['brand_name'] %></p>
+      <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
+      <p><span>Total dist: </span><%= @bike['distance'] %></p>
     </div>
   </div>
 </div>
