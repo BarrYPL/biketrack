@@ -103,7 +103,8 @@ class UserProfileController < ApplicationController
 
     def add_bike_to_db(params_hash)
         unless Bike.exists?(bike_id: params_hash['id'])
-            Bike.create!(
+            @user =  UserInfo.find_by(id: session[:current_user_id])
+            @user.Bike.create!(
                 bike_id: params_hash['id'],
                 bike_name: params_hash['name'],
                 brand: params_hash['brand_name'],
@@ -113,7 +114,7 @@ class UserProfileController < ApplicationController
                 bike_model_name: params_hash['model_name'],
                 frame_type: params_hash['frame_type'],
                 description: params_hash['description']
-            ), UserInfo: UserInfo.find_by(id: session[:current_user_id])
+            )
         end
     end
 
