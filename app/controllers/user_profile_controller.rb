@@ -55,6 +55,7 @@ class UserProfileController < ApplicationController
                 @total_counted_kilometers = (Ride.where(athlete_id: session[:current_user_id]).sum(:distance) / 1000.0).round(2)
                 @total_rides = Ride.where(athlete_id: session[:current_user_id]).count
             end
+            #if user does not have any data fill everything with "--".
             @total_rides ||= "--"
             @max_speed ||= "--"
             @longest_ride ||= "--"
@@ -83,8 +84,7 @@ class UserProfileController < ApplicationController
                 end
             end
             
-            #if user does not have any data fill everything with "--".
-            @gears_array ||= "--"
+            @gears_array ||= []
         else
             redirect_to homepage_url
         end
