@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
     def redirect_oauth
+        puts "#{stored_client_id}"
         redirect_to "https://www.strava.com/oauth/authorize?client_id=#{stored_client_id}&response_type=code&redirect_uri=https://biketrack.pro/oauth-callback&approval_prompt=auto&scope=read,profile:read_all,activity:read_all", allow_other_host: true
     end
 
@@ -7,6 +8,7 @@ class LoginController < ApplicationController
         strava_key_handler = "https://www.strava.com/oauth/token"
         response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => stored_client_id, :client_secret => stored_client_secret, :code => params[:code], :grant_type => 'authorization_code'))
         @params = JSON.parse(response.body)
+        puts @params.body
         if (@params.has_key?("message"))
             redirect_to homepage_url
         else
