@@ -1,6 +1,6 @@
 class LoginController < ApplicationController
     def redirect_oauth
-        @stored_client_id = Rails.application.config_for(:configuration)['stored_api_key']
+        @stored_client_id = Rails.application.secrets.stored_api_key
         puts @stored_api_key
         redirect_to "https://www.strava.com/oauth/authorize?client_id=#{@stored_client_id}&response_type=code&redirect_uri=https://biketrack.pro/oauth-callback&approval_prompt=auto&scope=read,profile:read_all,activity:read_all", allow_other_host: true
     end
