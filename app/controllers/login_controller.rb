@@ -1,16 +1,11 @@
 class LoginController < ApplicationController
     def redirect_oauth
-        @stored_client_id = Rails.application.secrets.stored_client_id
-        redirect_to "https://www.strava.com/oauth/authorize?client_id=#{@stored_client_id}&response_type=code&redirect_uri=https://biketrack.pro/oauth-callback&approval_prompt=auto&scope=read,profile:read_all,activity:read_all", allow_other_host: true
+        redirect_to 'https://www.strava.com/oauth/authorize?client_id="113042"&response_type=code&redirect_uri=https://biketrack.pro/oauth-callback&approval_prompt=auto&scope=read,profile:read_all,activity:read_all', allow_other_host: true
     end
 
     def authenticate
-        @stored_client_secret = Rails.application.secrets.stored_client_secret
-        puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-        puts @stored_client_id
-        puts @stored_client_secret
         strava_key_handler = "https://www.strava.com/oauth/token"
-        response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => @stored_client_id, :client_secret => @stored_client_secret, :code => params[:code], :grant_type => 'authorization_code'))
+        response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => "113042", :client_secret => "c9fb38720c6838d9f42ef6bace73ca694f948eaa", :code => params[:code], :grant_type => 'authorization_code'))
         @params = JSON.parse(response.body)
         puts @params.body
         if (@params.has_key?("message"))
