@@ -6,6 +6,9 @@ class LoginController < ApplicationController
 
     def authenticate
         @stored_client_secret = Rails.application.secrets.stored_client_secret
+        puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        puts @stored_client_id
+        puts @stored_client_secret
         strava_key_handler = "https://www.strava.com/oauth/token"
         response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => @stored_client_id, :client_secret => @stored_client_secret, :code => params[:code], :grant_type => 'authorization_code'))
         @params = JSON.parse(response.body)
