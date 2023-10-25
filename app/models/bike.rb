@@ -6,7 +6,7 @@ class Bike < ApplicationRecord
     scope :only_user_bikes, -> { where(user_info_id: session[:current_user_id]) }
 
     #show bike's active chain
-    validates :only_one_active_chain
+    validate :only_one_active_chain
 
     private
 
