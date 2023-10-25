@@ -7,7 +7,7 @@ class Chain < ApplicationRecord
     private
   
     def update_chain_status
-        puts "Called update_chain_status."
+        binding.pry
         if self.changed_timestamp_changed?
             puts "Chain #{self.id} has changed."
             self.bike.chains.update_all(is_actually_used: false)
