@@ -73,6 +73,6 @@ class ChainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chain_params
-      params.require(:chain).permit(:chain_name, :chain_model, :vaxed_timestamp, :changed_timestamp, :kmoffset, :bike_id)
+      params.require(:chain).permit(:chain_name, :chain_model, :vaxed_timestamp, :instalation_date, :kmoffset, :bike_id)
     end
 end
