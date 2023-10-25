@@ -1,4 +1,4 @@
-class GetUserData
+class GetUserDataJob
     include Sidekiq::Job
 
     def perform(book_loan_id)
