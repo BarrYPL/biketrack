@@ -13,6 +13,9 @@ class Bike < ApplicationRecord
     def only_one_active_chain
         if self.chains.active_chain.count > 1
             errors.add(:chains, "Only one chain can be active at a time.")
+            return false
+        else
+            return true
         end
     end
 end
