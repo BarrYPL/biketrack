@@ -8,6 +8,7 @@ class LoginController < ApplicationController
         response = Excon.post(strava_key_handler, :body => URI.encode_www_form(:client_id => "113042", :client_secret => "c9fb38720c6838d9f42ef6bace73ca694f948eaa", :code => params[:code], :grant_type => 'authorization_code'))
         @params = JSON.parse(response.body)
         if (@params.has_key?("message"))
+            binding.pry
             redirect_to homepage_url
         else
             unless UserInfo.exists?(athlete_id: @params["athlete"]["id"])
