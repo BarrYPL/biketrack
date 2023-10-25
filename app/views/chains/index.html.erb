@@ -10,6 +10,7 @@
       <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
       <p><span>Total dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
       <p><span>Vax Exploatation:</span> xx %</p>
+      <p><span>Active chain:</span> <%= @bike.chains.active_chain %></p>
     </div>
   </div>
 </div>

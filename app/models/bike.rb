@@ -4,7 +4,6 @@ class Bike < ApplicationRecord
 
     #show user's bikes
     scope :only_user_bikes, -> { where(user_info_id: session[:current_user_id]) }
-    scope :active_chain, -> { joins(:chains).where('chains.is_actually_used = ?', true) }
 
     #show bike's active chain
     validate :only_one_active_chain
