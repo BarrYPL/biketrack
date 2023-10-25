@@ -30,7 +30,6 @@ class UserProfileController < ApplicationController
                     break
                 end
                 unless response_rides.first.nil?
-                    binding.pry
                     add_ride_to_db(response_rides) 
                 end 
                 page += 1
@@ -121,6 +120,7 @@ class UserProfileController < ApplicationController
     end
 
     def add_ride_to_db(params_hash)
+        binding.pry
         params_hash.each do |ride_hash|
             unless Ride.exists?(ride_id: ride_hash['id'])
                 Ride.create!(
