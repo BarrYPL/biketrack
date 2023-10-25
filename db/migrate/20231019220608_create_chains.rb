@@ -3,7 +3,7 @@ class CreateChains < ActiveRecord::Migration[7.0]
     create_table :chains do |t|
       t.string :chain_name
       t.datetime :vaxed_timestamp
-      t.datetime :changed_timestamp
+      t.datetime :instalation_date
       t.integer :kmoffset
       t.boolean :is_actually_used, default: false
 
