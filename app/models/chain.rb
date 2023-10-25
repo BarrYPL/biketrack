@@ -7,7 +7,6 @@ class Chain < ApplicationRecord
     private
   
     def update_chain_status
-        binding.pry
         if self.instalation_date_changed?
             puts "Chain #{self.id} has changed."
             self.bike.chains.where.not(id: self.id).update_all(is_actually_used: false)
