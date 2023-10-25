@@ -7,11 +7,11 @@ class Chain < ApplicationRecord
 
     private
   
- #   def update_chain_status
+    def update_chain_status
  #       if self.instalation_date_changed?
  #           self.bike.chains.where.not(id: self.id).update_all(is_actually_used: false)
  #       end
- #   end
+    end
 
     def uptade_active_chain
         if self.is_actually_used_changed?
