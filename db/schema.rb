@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_104106) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_22_164940) do
   create_table "bikes", force: :cascade do |t|
     t.string "bike_name"
     t.string "brand"
@@ -29,13 +29,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_104106) do
 
   create_table "chains", force: :cascade do |t|
     t.string "chain_name"
-    t.integer "vaxed_timestamp"
-    t.integer "changed_timestamp"
+    t.datetime "vaxed_timestamp"
+    t.datetime "instalation_date"
     t.integer "kmoffset"
     t.boolean "is_actually_used", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "chain_model"
+    t.integer "bike_id"
   end
 
   create_table "rides", force: :cascade do |t|
