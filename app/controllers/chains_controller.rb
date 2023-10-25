@@ -26,6 +26,7 @@ class ChainsController < ApplicationController
     @chain = Chain.new(chain_params)
     respond_to do |format|
       if @chain.save
+        @chain.bike.chains.order(:instalation_date).first.update(is_actually_used: true)
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @bike['bike_id'] }
         format.json { render :show, status: :created, location: @chain }
       else
@@ -39,6 +40,8 @@ class ChainsController < ApplicationController
   def update
     respond_to do |format|
       if @chain.update(chain_params)
+        #choose latest installed chain from his bike and set it as active
+        @chain.bike.chains.order(:instalation_date).first.update(is_actually_used: true)
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully updated." }
         format.json { render :show, status: :ok, location: @chain }
       else
