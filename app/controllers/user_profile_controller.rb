@@ -1,8 +1,7 @@
 class UserProfileController < ApplicationController
     def index
         if UserInfo.exists?(athlete_id: session[:current_user_id])
-            #getUserData by using sidekiq
-            GetUserDataJob.perform_async
+            getUserData
         else
             redirect_to homepage_url
         end
