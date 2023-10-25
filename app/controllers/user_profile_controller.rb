@@ -30,7 +30,8 @@ class UserProfileController < ApplicationController
                 if response_rides.count == 0
                     break
                 end
-                unless response_rides.first.nil? 
+                unless response_rides.first.nil?
+                    binding.pry
                     add_ride_to_db(response_rides) 
                 end 
                 page += 1

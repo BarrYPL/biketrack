@@ -5,7 +5,7 @@ class CreateChains < ActiveRecord::Migration[7.0]
       t.datetime :vaxed_timestamp
       t.datetime :changed_timestamp
       t.integer :kmoffset
-      t.boolean :is_actually_used
+      t.boolean :is_actually_used, default: false
 
       t.timestamps
     end

@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_104106) do
     t.integer "vaxed_timestamp"
     t.integer "changed_timestamp"
     t.integer "kmoffset"
-    t.boolean "is_actually_used"
+    t.boolean "is_actually_used", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "chain_model"
