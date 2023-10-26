@@ -28,7 +28,7 @@
           <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= chain['chain_name'] %></h2></div>
           <% unless chain['instalation_date'].nil? %>
             <div class="chain-stats">
-              <div class="chain-stat"><span>Since: </span><p><%= chain['instalation_date'] %></p></div>
+              <div class="chain-stat"><span>Since: </span><p><%= chain['instalation_date'].strftime("%d.%m.%yr.") %></p></div>
               <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
             </div>
           <% end %>
