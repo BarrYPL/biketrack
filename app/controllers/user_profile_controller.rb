@@ -17,6 +17,7 @@ class UserProfileController < ApplicationController
             activities_request_url = "https://www.strava.com/api/v3/athlete/activities?before=#{time_now_to_link}&after=#{time_after}&page=1&per_page=5"
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
             response_rides = JSON.parse(response.body)
+            binding.pry
             unless response_rides.first.nil? && response_rides.has_key?("message")
                 add_ride_to_db(response_rides) 
             end
