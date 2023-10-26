@@ -19,7 +19,9 @@ class UserProfileController < ApplicationController
             response_rides = JSON.parse(response.body)
             binding.pry
             unless response_rides.first.nil?
-                add_ride_to_db(response_rides) 
+                unless response_rides.has_key?("message")
+                    add_ride_to_db(response_rides) 
+                end
             end
         else
             page = 1
@@ -31,7 +33,9 @@ class UserProfileController < ApplicationController
                     break
                 end
                 unless response_rides.first.nil?
-                    add_ride_to_db(response_rides) 
+                    unless response_rides.has_key?("message")
+                        add_ride_to_db(response_rides) 
+                    end
                 end 
                 page += 1
             end
