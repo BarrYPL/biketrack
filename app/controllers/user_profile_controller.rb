@@ -18,7 +18,7 @@ class UserProfileController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
             response_rides = JSON.parse(response.body)
             binding.pry
-            unless response_rides.first.empty?
+            unless response_rides.first.nil?
                 add_ride_to_db(response_rides) 
             end
         else
@@ -30,7 +30,7 @@ class UserProfileController < ApplicationController
                 if response_rides.count == 0
                     break
                 end
-                unless response_rides.first.empty?
+                unless response_rides.first.nil?
                     add_ride_to_db(response_rides) 
                 end 
                 page += 1
