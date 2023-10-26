@@ -92,6 +92,7 @@ class UserProfileController < ApplicationController
                     @gears_array << response_bike
                 else
                     @gears_array << Bike.find_by(bike_id: gear)
+                    binding.pry
                     @chains_km[Bike.find_by(bike_id: gear).id] = km_since_last_vaxking(Bike.find_by(bike_id: gear).chains.where(is_actually_used: true).first)
                 end
             end

@@ -66,7 +66,7 @@
                                             <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= bike.chains.active_chain.first['chain_name'] %></h2></div>
                                             <div class="chain-stats">
                                                 <div class="chain-stat"><span>Since: </span><p><%= bike.chains.active_chain.first['instalation_date'].strftime("%d.%m.%yr.") %></p></div>
-                                                <div class="chain-stat"><span>Distance: </span><p><%= @chain_km %></p></div>
+                                                <div class="chain-stat"><span>Distance: </span><p><%= @chains_km %></p></div>
                                             </div>
                                         </div>
                                     <% end %>
