@@ -61,14 +61,16 @@
                                     <h3 class="centred"><span><%= bike['bike_name'] %></span></h3>
                                     <p><span>Last mainestence date:</span> XXX</p>
                                     <p><span>Km since last mainestence:</span> XXX</p>
-                                    <% unless @bike.chains.active_chain.first.nil? %>
-                                        <div class="chain-card">
-                                            <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= bike.chains.active_chain.first['chain_name'] %></h2></div>
-                                            <div class="chain-stats">
-                                                <div class="chain-stat"><span>Since: </span><p><%= bike.chains.active_chain.first['instalation_date'] %></p></div>
-                                                <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
+                                    <% if @bike %>
+                                        <% unless @bike.chains.active_chain.first.nil? %>
+                                            <div class="chain-card">
+                                                <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= bike.chains.active_chain.first['chain_name'] %></h2></div>
+                                                <div class="chain-stats">
+                                                    <div class="chain-stat"><span>Since: </span><p><%= bike.chains.active_chain.first['instalation_date'] %></p></div>
+                                                    <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <% end %>
                                     <% end %>
                                 </div>
                         </div>
