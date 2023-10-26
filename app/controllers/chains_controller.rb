@@ -74,7 +74,7 @@ class ChainsController < ApplicationController
 
     def update_chains_of_bike(bike)
       bike.chains.update_all(is_actually_used: false)
-      bike.chains.order(:instalation_date).first.update(is_actually_used: true)
+      bike.chains.order(:instalation_date).last.update(is_actually_used: true)
     end
 
     # Only allow a list of trusted parameters through.
