@@ -82,8 +82,7 @@ class ChainsController < ApplicationController
     end
 
     def km_since_last_vaxking(chain)
-      binding.pry
-      if chain.vaxed_timestamp.nil?
+      unless chain.vaxed_timestamp.nil?
         #sum all km from vaxing date to now on specified bike
         return Ride.where(bike_id: chain.bike_id).where("start_date > ?", chain.vaxed_timestamp).sum(:distance)
       end
