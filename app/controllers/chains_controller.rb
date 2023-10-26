@@ -59,6 +59,13 @@ class ChainsController < ApplicationController
     end
   end
 
+  def km_since_last_vaxking(chain)
+    if chain.vaxed_timestamp.nil?
+      #sum all km from vaxing date to now on specified bike
+      return Ride.where(bike_id: chain.bike_id).where("start_date > ?", chain.vaxed_timestamp).sum(:distance)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_chain
@@ -75,13 +82,6 @@ class ChainsController < ApplicationController
     def update_chains_of_bike(bike)
       bike.chains.update_all(is_actually_used: false)
       bike.chains.order(:instalation_date).last.update(is_actually_used: true)
-    end
-
-    def km_since_last_vaxking(chain)
-      if chain.vaxed_timestamp.nil?
-        #sum all km from vaxing date to now on specified bike
-        return Ride.where(bike_id: chain.bike_id).where("start_date > ?", chain.vaxed_timestamp).sum(:distance)
-      end
     end
 
     # Only allow a list of trusted parameters through.
