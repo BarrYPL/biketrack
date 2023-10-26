@@ -22,12 +22,11 @@ class ChainsController < ApplicationController
 
   # POST /chains or /chains.json
   def create
-    @bike = Bike.find_by(id: params['chain']['bike_id'])
     @chain = Chain.new(chain_params)
     respond_to do |format|
       if @chain.save
-        @chain.bike.chains.order(:instalation_date).last.update(is_actually_used: true)
-        format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @bike['bike_id'] }
+        update_chains_of_bike(@chain.bike)
+        format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @chain.bike }
         format.json { render :show, status: :created, location: @chain }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,8 +39,7 @@ class ChainsController < ApplicationController
   def update
     respond_to do |format|
       if @chain.update(chain_params)
-        #choose latest installed chain from his bike and set it as active
-        @chain.bike.chains.order(:instalation_date).last.update(is_actually_used: true)
+        update_chains_of_bike(@chain.bike)
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully updated." }
         format.json { render :show, status: :ok, location: @chain }
       else
@@ -72,6 +70,11 @@ class ChainsController < ApplicationController
       if @bike.nil?
         redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
       end
+    end
+
+    def update_chains_of_bike(bike)
+      bike.chains.update_all(is_actually_used: false)
+      bike.chains.order(:instalation_date).first.update(is_actually_used: true)
     end
 
     # Only allow a list of trusted parameters through.
