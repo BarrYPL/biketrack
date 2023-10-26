@@ -29,7 +29,7 @@
           <% unless chain['instalation_date'].nil? %>
             <div class="chain-stats">
               <div class="chain-stat"><span>Since: </span><p><%= chain['instalation_date'].strftime("%d.%m.%yr.") %></p></div>
-              <div class="chain-stat"><span>Distance: </span><p><%= km_since_last_vaxing(chain) %></p></div>
+              <div class="chain-stat"><span>Distance: </span><p><%= @chains_km %></p></div>
             </div>
           <% end %>
         </div>
