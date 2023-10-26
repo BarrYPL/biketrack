@@ -82,6 +82,7 @@ class UserProfileController < ApplicationController
 
         unless (@unique_gear_ids.empty?)
             @gears_array = []
+            @chains_km = Hash.new()
             @unique_gear_ids.each do |gear|
                 unless Bike.find_by(bike_id: gear)
                     gears_request_url = "https://www.strava.com/api/v3/gear/#{gear}"
@@ -91,13 +92,22 @@ class UserProfileController < ApplicationController
                     @gears_array << response_bike
                 else
                     @gears_array << Bike.find_by(bike_id: gear)
+                    @chain_km[Bike.find_by(bike_id: gear).id] = km_since_last_vaxking(Bike.find_by(bike_id: gear).chains.where(is_actually_used: true))
                 end
             end
         end
         
         @gears_array ||= []
     end
+
     private
+
+    def km_since_last_vaxking(chain)
+        unless chain.vaxed_timestamp.nil?
+          #sum all km from vaxing date to now on specified bike
+          return (Ride.where(gear_id: chain.bike.bike_id).where("timestamp > ?", chain.vaxed_timestamp.to_i).sum(:distance).to_f / 1000.0).round(2)
+        end
+    end
 
     def format_time(seconds)
         hours = seconds / 3600

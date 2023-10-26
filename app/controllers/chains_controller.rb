@@ -81,6 +81,7 @@ class ChainsController < ApplicationController
       bike.chains.order(:instalation_date).last.update(is_actually_used: true)
     end
 
+    #would be nice to exteack this to some module later
     def km_since_last_vaxking(chain)
       unless chain.vaxed_timestamp.nil?
         #sum all km from vaxing date to now on specified bike
