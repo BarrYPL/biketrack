@@ -29,7 +29,7 @@
           <% unless chain['instalation_date'].nil? %>
             <div class="chain-stats">
               <div class="chain-stat"><span>Since: </span><p><%= chain['instalation_date'].strftime("%d.%m.%yr.") %></p></div>
-              <div class="chain-stat"><span>Distance: </span><p>xx km</p></div>
+              <div class="chain-stat"><span>Distance: </span><p><%= km_since_last_vaxing(chain) %></p></div>
             </div>
           <% end %>
         </div>
@@ -38,4 +38,7 @@
   <% end %>
 </div>
 
-<a href="/chains/new?bike=<%= @bike['id'] %>"><button class="primary">New Chain</button></a>
+<div class="buttons">
+  <a href="/chains/new?bike=<%= @bike['id'] %>"><button class="primary">New Chain</button></a>
+  <a href="/profile"><button class="secondary">Back to profile</button></a>
+</div>
