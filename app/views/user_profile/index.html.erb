@@ -69,7 +69,7 @@
                                                 <div class="chain-stat"><span>Vaxed: </span><p><%= bike.chains.active_chain.first['vaxed_timestamp'].strftime("%d.%m.%yr.") %></p></div>
                                                 <div class="chain-stat"><span>Distance: </span><p><%= @chains_km[bike.id] %> km</p></div>
                                                 <label for="usage"><span>Exploatatin:</span> 32%</label>
-                                                <progress id="usage" value="32" max="100"> 32% </progress>
+                                                <progress id="usage" value="<%= @chains_km[bike.id]/2.5 %>" max="100"> 32% </progress>
                                             </div>
                                         </div></a>
                                     <% end %>
