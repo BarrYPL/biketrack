@@ -104,3 +104,8 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
   }
+
+  #usage {
+    height: 5px;
+    background: #73fd2e;
+  }
