@@ -4,13 +4,15 @@
     border-radius: 20px;
 }
 
-.form-field {
+.form-field,
+.form-group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
 }
 
-.form-field input {
+.form-field input,
+.form-group input {
     width: 170px;
     outline: none;
     border: none;
