@@ -131,6 +131,7 @@
 .chain-stats {
     display: flex;
     color: #121212;
+    flex-direction: column;
 }
 
 .chain-stat {
