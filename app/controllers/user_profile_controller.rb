@@ -102,13 +102,6 @@ class UserProfileController < ApplicationController
 
     private
 
-    def km_since_last_vaxking(chain)
-        unless chain.vaxed_timestamp.nil?
-          #sum all km from vaxing date to now on specified bike
-          return (Ride.where(gear_id: chain.bike.bike_id).where("timestamp > ?", chain.vaxed_timestamp.to_i).sum(:distance).to_f / 1000.0).round(2)
-        end
-    end
-
     def format_time(seconds)
         hours = seconds / 3600
         minutes = (seconds % 3600) / 60
