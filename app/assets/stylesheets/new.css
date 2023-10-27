@@ -12,7 +12,7 @@
 }
 
 .form-field input,
-.form-group input {
+.form-control {
     width: 170px;
     outline: none;
     border: none;
