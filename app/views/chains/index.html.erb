@@ -33,7 +33,6 @@
             <div class="chain-stats">
               <div class="chain-stat"><span>Since: </span><p><%= chain['vaxed_timestamp'].strftime("%d.%m.%yr.") %></p></div>
               <div class="chain-stat"><span>Distance: </span><p><%= @chains_km[chain.id] %> km</p></div>
-              <div class="chain-stat"><span>Test: </span><%= chain.km_since_vaxed %></div>
             </div>
           <% end %>
         </div>

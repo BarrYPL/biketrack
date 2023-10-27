@@ -81,14 +81,6 @@ class ChainsController < ApplicationController
       bike.chains.order(:instalation_date).last.update(is_actually_used: true)
     end
 
-    #would be nice to exteack this to some module later
-    def km_since_last_vaxking(chain)
-      unless chain.vaxed_timestamp.nil?
-        #sum all km from vaxing date to now on specified bike
-        return (Ride.where(gear_id: chain.bike.bike_id).where("timestamp > ?", chain.vaxed_timestamp.to_i).sum(:distance).to_f / 1000.0).round(2)
-      end
-    end
-
     # Only allow a list of trusted parameters through.
     def chain_params
       params.require(:chain).permit(:chain_name, :chain_model, :vaxed_timestamp, :instalation_date, :kmoffset, :bike_id)
