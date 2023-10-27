@@ -13,6 +13,7 @@ class ChainsController < ApplicationController
 
   # GET /chains/1 or /chains/1.json
   def show
+    @distance = km_since_last_vaxking(@chain)
   end
 
   # GET /chains/new

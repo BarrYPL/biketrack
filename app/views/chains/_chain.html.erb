@@ -4,7 +4,7 @@
     <div class="view-chain-stats">
         <div class="chain-stat"><span>Chain Model: </span><p><%= @chain['chain_model'] %></p></div>
         <div class="chain-stat"><span>Used Since: </span><p><%= @chain['instalation_date'].strftime("%d.%m.%yr.") %></p></div>
-        <div class="chain-stat"><span>Distance: </span><p><%= km_since_vaxking(@chain) %> km</p></div>
+        <div class="chain-stat"><span>Distance: </span><p><%= @distance %> km</p></div>
         <div class="chain-stat"><span>Vaxed: </span><p><%= @chain['vaxed_timestamp'].strftime("%d.%m.%yr.") %></p></div>
         <div class="chain-stat"><span>Offset: </span><p><% if @chain['kmoffset'].nil? %> 0 <% else %> <%= @chain['kmoffset'] %> <% end %> km</p></div>
     </div>
