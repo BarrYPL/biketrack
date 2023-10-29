@@ -25,7 +25,7 @@
 
 <% unless @chains.empty? %>
   <div class="bike-km-chart">
-    <%= line_chart Ride.where(gear_id: @bike['bike_id']).group_by_day(:created_at).count, library: { title: 'Przebyte kilometry na rowerze' } %>
+    <%= line_chart Ride.where(gear_id: @bike['bike_id']).group_by_day(:timestamp).sum(:distance).cumulative, library: { title: 'Przebyte kilometry na rowerze' } %>
   </div>
 <% end %>
 
