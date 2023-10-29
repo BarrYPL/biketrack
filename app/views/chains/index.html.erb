@@ -11,12 +11,12 @@
       <p><span>Total bike dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
       <p><span>Vax Exploatation:</span>
       <% unless @bike.is_a?(Hash) %>
-        <% unless @bike.chains.active_chain.first.nil? %>
-          <%= (@chains_km[@bike.chains.active_chain.first['id']] / 2.5).round(2) %> %
+        <% unless @selected_chain.nil? %>
+          <%= (@chains_km[@selected_chain['id']] / 2.5).round(2) %> %
         <% end %></p>
         <p><span>Active chain:</span>
-        <% unless @bike.chains.active_chain.first.nil? %>
-          <%= @bike.chains.active_chain.first['chain_name'] %>
+        <% unless @selected_chain.nil? %>
+          <%= @selected_chain['chain_name'] %>
         <% end %></p>
       <% end %>
     </div>
@@ -25,9 +25,9 @@
 
 <% unless @chains.empty? %>
   <div class="bike-km-chart">
-    <h2>Wykres dla <%= @bike.chains.active_chain.first['chain_name'] %></h2>
+    <h2>Wykres dla <%= @selected_chain['chain_name'] %></h2>
     <p><%= @selected_chain.vaxed_timestamp %></p>
-    <%= line_chart @cumulative_rides, xtitle: "Day", ytitle: "Km", points: false, suffix: "km", colors: ["#73fd2e"], range: @selected_chain.vaxed_timestamp..Time.now, library: {backgroundColor: "#fff", color: "#73fd2e"}  %>
+    <%= line_chart @cumulative_rides, xtitle: "Day", ytitle: "Km", points: false, suffix: "km", colors: ["#73fd2e"], library: {backgroundColor: "#fff", color: "#73fd2e"}  %>
   </div>
 <% end %>
 
