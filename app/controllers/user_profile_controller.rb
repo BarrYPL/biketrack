@@ -18,7 +18,7 @@ class UserProfileController < ApplicationController
             response = Excon.get(activities_request_url, :headers => {'Authorization' => "Bearer #{session[:current_user_token]}"})
             response_rides = JSON.parse(response.body)
             unless response_rides.first.nil?
-                unless response_rides.first.has_key?("message")
+                unless response_rides.is_a?(Hash)
                     add_ride_to_db(response_rides) 
                 end
             end
@@ -32,7 +32,7 @@ class UserProfileController < ApplicationController
                     break
                 end
                 unless response_rides.first.nil?
-                    unless response_rides.first.has_key?("message")
+                    unless response_rides.is_a?(Hash)
                         add_ride_to_db(response_rides) 
                     end
                 end 
