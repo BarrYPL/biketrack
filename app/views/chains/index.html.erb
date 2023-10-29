@@ -22,7 +22,7 @@
 </div>
 
 <div class="bike-km-chart">
-  <%= @gike['bike_id'] >
+  <%= @gike['bike_id'] %>
   <%= Ride.where(gear_id: @bike['bike_id']).group_by_day(:created_at).sum(:distance) %>
 </div>
 
