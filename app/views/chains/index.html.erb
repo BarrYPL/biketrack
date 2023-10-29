@@ -26,7 +26,7 @@
 <% unless @chains.empty? %>
   <div class="bike-km-chart">
     <h2>Wykres dla <%= @bike.chains.active_chain.first['chain_name'] %></h2>
-    <%= line_chart @cumulative_rides, xtitle: "Day", ytitle: "Km", points: false, suffix: "km", colors: ["#73fd2e"], library: {backgroundColor: "#fff", color: "#73fd2e"}  %>
+    <%= line_chart @cumulative_rides, xtitle: "Day", ytitle: "Km", points: false, suffix: "km", colors: ["#73fd2e"], range: @bike.chains.active_chain.first['vaxed_timestamp']..Time.now library: {backgroundColor: "#fff", color: "#73fd2e"}  %>
   </div>
 <% end %>
 
