@@ -10,13 +10,16 @@
       <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
       <p><span>Total bike dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
       <p><span>Vax Exploatation:</span>
-      <% unless @bike.chains.active_chain.first.nil? %>
-        <%= (@chains_km[@bike.chains.active_chain.first['id']] / 2.5).round(2) %> %
-      <% end %></p>
-      <p><span>Active chain:</span>
-      <% unless @bike.chains.active_chain.first.nil? %>
-        <%= @bike.chains.active_chain.first['chain_name'] %>
-      <% end %></p>
+      #If bike is  hash instead of model don't show This
+      <% unless @bike.is_a?(Hash) %>
+        <% unless @bike.chains.active_chain.first.nil? %>
+          <%= (@chains_km[@bike.chains.active_chain.first['id']] / 2.5).round(2) %> %
+        <% end %></p>
+        <p><span>Active chain:</span>
+        <% unless @bike.chains.active_chain.first.nil? %>
+          <%= @bike.chains.active_chain.first['chain_name'] %>
+        <% end %></p>
+      <% end %>
     </div>
   </div>
 </div>
