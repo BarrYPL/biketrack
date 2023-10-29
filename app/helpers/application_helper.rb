@@ -1,8 +1,5 @@
 module ApplicationHelper
     def km_since_last_vaxking(chain)
-        
-        binding.pry
-        
         unless chain.nil?
             unless chain.vaxed_timestamp.nil?
                 #sum all km from vaxing date to now on specified bike
