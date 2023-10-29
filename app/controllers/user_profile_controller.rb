@@ -32,7 +32,7 @@ class UserProfileController < ApplicationController
                     break
                 end
                 unless response_rides.first.nil?
-                    unless response_rides.has_key?("message")
+                    unless response_rides.body.has_key?("message")
                         add_ride_to_db(response_rides) 
                     end
                 end 
