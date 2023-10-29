@@ -1,6 +1,7 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index, :new ]
+  before_action :set_bike, only: [:index, :new, :show ]
+  before_action :prepare_chart, only: [:show, :index]
 
   # GET /chains or /chains.json
   def index
@@ -80,6 +81,11 @@ class ChainsController < ApplicationController
     def update_chains_of_bike(bike)
       bike.chains.update_all(is_actually_used: false)
       bike.chains.order(:instalation_date).last.update(is_actually_used: true)
+    end
+
+    def prepare_chart
+      @rides = Ride.where(gear_id: @bike['bike_id']).group_by_day(:timestamp).sum(:distance)
+      @cumulative_rides = @rides.transform_values.with_index { |value, index| @rides.values[0..index].sum / 1000.0 }
     end
 
     # Only allow a list of trusted parameters through.
