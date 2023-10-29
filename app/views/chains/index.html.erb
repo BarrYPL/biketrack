@@ -10,7 +10,6 @@
       <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
       <p><span>Total bike dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
       <p><span>Vax Exploatation:</span>
-      #If bike is  hash instead of model don't show This
       <% unless @bike.is_a?(Hash) %>
         <% unless @bike.chains.active_chain.first.nil? %>
           <%= (@chains_km[@bike.chains.active_chain.first['id']] / 2.5).round(2) %> %
@@ -24,9 +23,11 @@
   </div>
 </div>
 
-<div class="bike-km-chart">
-  <%= line_chart Ride.where(gear_id: @bike['bike_id']).group_by_day(:created_at).count, library: { title: 'Przebyte kilometry na rowerze' } %>
-</div>
+<% unless @chains.empty? %>
+  <div class="bike-km-chart">
+    <%= line_chart Ride.where(gear_id: @bike['bike_id']).group_by_day(:created_at).count, library: { title: 'Przebyte kilometry na rowerze' } %>
+  </div>
+<% end %>
 
 <div id="chains">
   <% if @chains.empty? %>
