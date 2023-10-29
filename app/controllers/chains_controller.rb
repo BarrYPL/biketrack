@@ -1,7 +1,8 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
   before_action :set_bike, only: [:index, :new ]
-  before_action :prepare_chart, only: [:index]
+  before_action :prepare_chart, only: [:show]
+  before_action :selected_chain, only: [:index]
 
   # GET /chains or /chains.json
   def index
@@ -84,9 +85,12 @@ class ChainsController < ApplicationController
     end
 
     def prepare_chart
-      @selected_chain = @bike.chains.active_chain.first
       @rides = Ride.where(gear_id: @bike['bike_id']).where('timestamp > ?', @selected_chain.vaxed_timestamp).group_by_day(:timestamp).sum(:distance)
       @cumulative_rides = @rides.transform_values.with_index { |value, index| (@rides.values[0..index].sum / 1000.0).round(0) }
+    end
+
+    def selected_chain
+      @selected_chain = @bike.chains.active_chain.first
     end
 
     # Only allow a list of trusted parameters through.

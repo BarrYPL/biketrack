@@ -13,3 +13,8 @@
     </div>
     <% end %>
 </div>
+
+<div class="bike-km-chart">
+    <h2>Wykres dla <%= @chain['chain_name'] %></h2>
+    <%= line_chart @cumulative_rides, xtitle: "Day", ytitle: "Km", points: false, suffix: "km", colors: ["#73fd2e"], library: {backgroundColor: "#fff", color: "#73fd2e"}  %>
+</div>

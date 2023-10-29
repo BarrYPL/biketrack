@@ -23,14 +23,6 @@
   </div>
 </div>
 
-<% unless @chains.empty? %>
-  <div class="bike-km-chart">
-    <h2>Wykres dla <%= @selected_chain['chain_name'] %></h2>
-    <p><%= @selected_chain.vaxed_timestamp %></p>
-    <%= line_chart @cumulative_rides, xtitle: "Day", ytitle: "Km", points: false, suffix: "km", colors: ["#73fd2e"], library: {backgroundColor: "#fff", color: "#73fd2e"}  %>
-  </div>
-<% end %>
-
 <div id="chains">
   <% if @chains.empty? %>
   <div class="alert-div"><p>This bike has no chains added yet.</p></div>
