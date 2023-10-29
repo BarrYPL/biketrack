@@ -5,7 +5,7 @@ class CreateRides < ActiveRecord::Migration[7.0]
       t.float :distance
       t.integer :athlete_id
       t.integer :moving_time
-      t.integer :timestamp
+      t.date :timestamp
       t.string :gear_id
       t.float :average_speed
       t.float :max_speed

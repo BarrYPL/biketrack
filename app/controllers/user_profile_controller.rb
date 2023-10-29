@@ -134,7 +134,7 @@ class UserProfileController < ApplicationController
                     distance: ride_hash['distance'],
                     athlete_id: ride_hash['athlete']['id'],
                     moving_time: ride_hash['moving_time'],
-                    timestamp: Time.parse(ride_hash['start_date']).to_i,
+                    timestamp: Time.parse(ride_hash['start_date']),
                     gear_id: ride_hash['gear_id'],
                     average_speed: ride_hash['average_speed'],
                     max_speed: ride_hash['max_speed'],
