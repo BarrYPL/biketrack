@@ -25,7 +25,7 @@
 
 <% unless @chains.empty? %>
   <div class="bike-km-chart">
-    <h2>Rafał is a gay</h2>
+    <h2>Wykres dla <%= @bike.chains.active_chain.first['chain_name'] %></h2>
     <%= line_chart @cumulative_rides, library: { title: 'Przebyte kilometry na rowerze' } %>
   </div>
 <% end %>
