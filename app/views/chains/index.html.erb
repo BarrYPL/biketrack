@@ -21,6 +21,10 @@
   </div>
 </div>
 
+<div class="bike-km-chart">
+  <%= line_chart Rides.where(gear_id: @bike['bike_id']).group_by_day(:created_at).sum(:distance), library: { title: 'Przebyte kilometry na rowerze' } %>
+</div>
+
 <div id="chains">
   <% if @chains.empty? %>
   <div class="alert-div"><p>This bike has no chains added yet.</p></div>
