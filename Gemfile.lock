@@ -100,6 +100,8 @@ GEM
     ffi (1.15.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -264,6 +266,7 @@ DEPENDENCIES
   debug
   excon (~> 0.103.0)
   ffi
+  groupdate (~> 6.4)
   importmap-rails
   jbuilder
   json (~> 2.6, >= 2.6.3)
