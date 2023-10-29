@@ -60,7 +60,8 @@
                                 <div class="bike-stats">
                                     <h3 class="centred"><span><%= bike['bike_name'] %></span></h3>
                                     <p><span>Last mainestence date:</span> XXX</p>
-                                    <% unless @bike.is_a?(Hash) %>
+                                    <% if !@bike.is_a?(Hash) %>
+                                    <%= @bike.class %>
                                         <% unless bike.chains.active_chain.first.nil? %>
                                         <a href="/chains/<%= bike.chains.active_chain.first['id'] %>">
                                             <div class="chain-card">
