@@ -8,7 +8,7 @@
     <div class="bike-description">
       <p><span>Brand: </span><%= @bike['brand'] %></p>
       <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
-      <p><span>Total dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
+      <p><span>Total bike dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
       <p><span>Vax Exploatation:</span>
       <% unless @bike.chains.active_chain.first.nil? %>
         <%= (@chains_km[@bike.chains.active_chain.first['id']] / 2.5).round(2) %> %

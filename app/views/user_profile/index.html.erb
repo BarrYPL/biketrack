@@ -60,7 +60,6 @@
                                 <div class="bike-stats">
                                     <h3 class="centred"><span><%= bike['bike_name'] %></span></h3>
                                     <p><span>Last mainestence date:</span> XXX</p>
-                                    <p><span>Km since last mainestence:</span> XXX</p>
                                     <% unless bike.chains.active_chain.first.nil? %>
                                     <a href="/chains/<%= bike.chains.active_chain.first['id'] %>">
                                         <div class="chain-card">
