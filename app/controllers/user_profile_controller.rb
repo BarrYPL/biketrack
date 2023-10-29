@@ -43,7 +43,7 @@ class UserProfileController < ApplicationController
         @last_ride = Hash.new()
         unless @last_ride_info.nil?
             @last_ride['name'] = @last_ride_info['ride_name']
-            @last_ride['timestamp'] = Time.at(@last_ride_info['timestamp']).strftime("%A, %B %d, %Y")
+            @last_ride['timestamp'] = (@last_ride_info['timestamp']).strftime("%A, %B %d, %Y")
             @last_ride['distance'] = (@last_ride_info['distance'].to_f / 1000.0).round(2)
             @last_ride['moving_time'] = format_time(@last_ride_info['moving_time'])
             @last_ride['total_elevation_gain'] = (@last_ride_info['total_elevation_gain']).round(0) 
