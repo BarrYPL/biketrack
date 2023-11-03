@@ -63,8 +63,16 @@ class BikeServicesController < ApplicationController
       @bike_service = BikeService.find(params[:id])
     end
 
+    def set_bike
+      @bike = Bike.find_by(id: params['bike'])
+      @bike ||= Bike.find_by(id: params['id'])
+      if @bike.nil?
+        redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def bike_service_params
-      params.fetch(:bike_service, {})
+      params.require(:bike_service).permit(:service_name, :service_date, :service_description, :bike_id)
     end
 end

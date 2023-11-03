@@ -59,7 +59,7 @@
                             <%= image_tag "bike.png" , class:"bike-icon" %>
                                 <div class="bike-stats">
                                     <h3 class="centred"><span><%= bike['bike_name'] %></span></h3>
-                                    <p><span>Last mainestence date:</span> XXX</p>
+                                    <p><span>Last service date:</span> XXX</p>
                                     <% if bike.is_a?(Bike) %>
                                         <% unless bike.chains.active_chain.first.nil? %>
                                         <a href="/chains/<%= bike.chains.active_chain.first['id'] %>">
@@ -77,7 +77,7 @@
                                 </div>
                         </div>
                         <div class="bike-buttons">
-                            <button class="primary">Mainestence</button>
+                            <a href="bike_services?bike=<%= bike['id'] %>"><button class="primary">Services</button></a>
                             <a href="chains?bike=<%= bike['id'] %>"><button class="secondary">Change chain</button></a>
                         </div>
                     </div>
