@@ -11,4 +11,7 @@
   <% end %>
 </div>
 
-<%= link_to "New bike service", new_bike_service_path %>
+<div class="buttons">
+  <a href="/bike_services/new?bike=<%= @bike['id'] %>"><button class="primary">New service</button></a>
+  <a href="/profile"><button class="secondary">Back to profile</button></a>
+</div>
