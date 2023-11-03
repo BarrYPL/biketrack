@@ -1,0 +1,2 @@
+class BikeService < ApplicationRecord
+end

@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_164940) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_31_122350) do
+  create_table "bike_services", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bikes", force: :cascade do |t|
     t.string "bike_name"
     t.string "brand"
@@ -44,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_164940) do
     t.float "distance"
     t.integer "athlete_id"
     t.integer "moving_time"
-    t.integer "timestamp"
+    t.date "timestamp"
     t.string "gear_id"
     t.float "average_speed"
     t.float "max_speed"

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Bike services</h1>
+
+<div id="bike_services">
+  <% @bike_services.each do |bike_service| %>
+    <%= render bike_service %>
+    <p>
+      <%= link_to "Show this bike service", bike_service %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bike service", new_bike_service_path %>
