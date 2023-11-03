@@ -4,7 +4,6 @@ class CreateBikeServices < ActiveRecord::Migration[7.0]
       t.service_name :string
       t.service_description :string
       t.service_date :date
-      t.bike_id :integer
       t.timestamps
     end
   end
