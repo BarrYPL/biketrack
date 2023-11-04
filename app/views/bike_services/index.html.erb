@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div id="bike-services">
+<div class="bike-services">
   <% if @bike_services.empty? %>
     <div class="alert-div"><p>This bike has not been serviced yet.</p></div>
   <% else %>
@@ -40,7 +40,7 @@
         <tr>
           <td><%= bike_service.service_name %></td>
           <td><%= bike_service.service_date %></td>
-          <td><%= link_to "Show this bike service", bike_service %></td>
+          <td><%= link_to "Show", bike_service %></td>
         </tr>
       <% end %>
     </tbody>
