@@ -74,7 +74,7 @@ class BikeServicesController < ApplicationController
     end
 
     def set_chain
-      @chain = @bike.chains.ctive_chain
+      @chain = @bike.chains.active_chain
     end
 
     # Only allow a list of trusted parameters through.
