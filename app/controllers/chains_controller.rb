@@ -74,6 +74,9 @@ class ChainsController < ApplicationController
 
     def set_bike
       @bike = Bike.find_by(id: params['bike'])
+      
+      binding.pry
+      
       if @bike.nil?
         redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
       end
