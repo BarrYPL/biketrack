@@ -75,7 +75,7 @@ class BikeServicesController < ApplicationController
 
     def set_chain
       @selected_chain = @bike.chains.active_chain.first
-      @chains_km = km_since_last_vaxking(chain)
+      @chains_km = km_since_last_vaxking(@selected_chain)
     end
 
     # Only allow a list of trusted parameters through.
