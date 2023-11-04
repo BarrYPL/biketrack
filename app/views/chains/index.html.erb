@@ -28,7 +28,7 @@
   <div class="alert-div"><p>This bike has no chains added yet.</p></div>
   <% else %>
     <% @chains.each do |chain| %>
-      <%= link_to chain_path(bike: "1") do %>
+      <%= link_to chain_path(id: chain.id, bike: "1") do %>
         <div class="chain-card">
           <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= chain['chain_name'] %></h2></div>
           <% unless chain['vaxed_timestamp'].nil? %>
