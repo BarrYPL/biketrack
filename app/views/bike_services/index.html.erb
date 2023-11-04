@@ -12,7 +12,7 @@
       <p><span>Vax Exploatation:</span>
       <% unless @bike.is_a?(Hash) %>
         <% unless @selected_chain.nil? %>
-          <%= (@chains_km[@selected_chain['id']] / 2.5).round(2) %> %
+          <%= (@chains_km / 2.5).round(2) %> %
         <% end %></p>
         <p><span>Active chain:</span>
         <% unless @selected_chain.nil? %>
