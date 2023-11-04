@@ -32,7 +32,7 @@
       <tr>
         <th>Name</th>
         <th>Date</th>
-        <th></th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
@@ -40,7 +40,10 @@
         <tr>
           <td><%= bike_service.service_name %></td>
           <td><%= bike_service.service_date %></td>
-          <td><%= link_to "Show", bike_service %></td>
+          <td><%= link_to bike_service(id: bike_service.id) do %>
+            <button class="secondary">Details</button>
+          <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

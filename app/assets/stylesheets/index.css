@@ -40,11 +40,16 @@
     padding: 15px 0px;
 }
 
-.bike-services{
+.bike-services {
     margin-top: 10px;
     background: rgba( 48, 111, 178, 0.15 );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     border-radius: 20px;
     padding: 15px 0px;
     height: 100%;
+}
+
+.bike-services table {
+    width: 100%;
+    text-align: center;
 }
