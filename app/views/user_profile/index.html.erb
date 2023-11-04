@@ -62,7 +62,7 @@
                                     <p><span>Last service date:</span> XXX</p>
                                     <% if bike.is_a?(Bike) %>
                                         <% unless bike.chains.active_chain.first.nil? %>
-                                        <a href="/chains/<%= bike.chains.active_chain.first['id'] %>">
+                                        <a href="/chains/<%= bike.chains.active_chain.first['id'] %>?bike=<%= bike.id %>">
                                             <div class="chain-card">
                                                 <div class="chain-model"><h2><i class="fa-solid fa-link"></i> <%= bike.chains.active_chain.first['chain_name'] %></h2></div>
                                                 <div class="chain-stats">

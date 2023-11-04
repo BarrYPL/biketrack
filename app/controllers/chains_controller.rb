@@ -72,13 +72,6 @@ class ChainsController < ApplicationController
       @chain = Chain.find(params[:id])
     end
 
-    def set_bike
-      @bike = Bike.find_by(id: params['bike'])
-      if @bike.nil?
-        redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
-      end
-    end
-
     def update_chains_of_bike(bike)
       bike.chains.update_all(is_actually_used: false)
       bike.chains.order(:instalation_date).last.update(is_actually_used: true)

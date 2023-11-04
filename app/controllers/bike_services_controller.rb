@@ -65,13 +65,6 @@ class BikeServicesController < ApplicationController
       @bike_service = BikeService.find(params[:id])
     end
 
-    def set_bike
-      @bike = Bike.find_by(id: params['bike'])
-      if @bike.nil?
-        redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
-      end
-    end
-
     def set_chain
       @selected_chain = @bike.chains.active_chain.first
       @chains_km = km_since_last_vaxking(@selected_chain)
