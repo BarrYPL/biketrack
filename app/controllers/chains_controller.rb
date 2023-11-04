@@ -78,7 +78,7 @@ class ChainsController < ApplicationController
     end
 
     def prepare_chart
-      @rides = Ride.where(gear_id: @bike['bike_id']).where('timestamp > ?', @selected_chain.vaxed_timestamp).group_by_day(:timestamp).sum(:distance)
+      @rides = Ride.where(gear_id: @bike['bike_id']).where('timestamp > ?', @chain.vaxed_timestamp).group_by_day(:timestamp).sum(:distance)
       
       binding.pry
       
