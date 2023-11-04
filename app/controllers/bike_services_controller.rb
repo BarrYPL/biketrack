@@ -1,6 +1,7 @@
 class BikeServicesController < ApplicationController
   before_action :set_bike_service, only: %i[ show edit update destroy ]
   before_action :set_bike, only: [:index, :new, :show ]
+  before_action :set_chain, only: [:index, :new, :show ]
 
   # GET /bike_services or /bike_services.json
   def index
@@ -70,6 +71,10 @@ class BikeServicesController < ApplicationController
       if @bike.nil?
         redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
       end
+    end
+
+    def set_chain
+      @chain = @bike.chains.ctive_chain
     end
 
     # Only allow a list of trusted parameters through.
