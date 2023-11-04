@@ -73,10 +73,8 @@ class ChainsController < ApplicationController
     end
 
     def set_bike
-      @bike = Bike.find_by(id: params['bike_id'])
-      
-      binding.pry
-      
+      @bike = Bike.find_by(id: params['bike'])
+      @bike ||= Bike.find_by(id: params['id'])
       if @bike.nil?
         redirect_to homepage_url, alert: "You probably doesn't have bikes added yet."
       end
@@ -98,6 +96,6 @@ class ChainsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chain_params
-      params.require(:chain).permit(:id, :chain_name, :chain_model, :vaxed_timestamp, :instalation_date, :kmoffset, :bike_id)
+      params.require(:chain).permit(:chain_name, :chain_model, :vaxed_timestamp, :instalation_date, :kmoffset, :bike_id)
     end
 end
