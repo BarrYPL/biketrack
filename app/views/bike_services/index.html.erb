@@ -23,16 +23,28 @@
   </div>
 </div>
 
-<div id="bike_services">
+<div id="bike-services">
   <% if @bike_services.empty? %>
     <div class="alert-div"><p>This bike has not been serviced yet.</p></div>
   <% else %>
-    <% @bike_services.each do |bike_service| %>
-      <%= render bike_service %>
-      <p>
-        <%= link_to "Show this bike service", bike_service %>
-      </p>
-    <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bike_services.each do |bike_service| %>
+        <tr>
+          <td><%= bike_service.service_name %></td>
+          <td><%= bike_service.service_date %></td>
+          <td><%= link_to "Show this bike service", bike_service %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <% end %>
 </div>
 
