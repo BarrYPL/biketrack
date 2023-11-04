@@ -1,13 +1,38 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Bike services</h1>
+<div class="chains-bike-card">
+  <h2 class="centred"><%= @bike['bike_name'] %></h2>
+  <div class="bike-content">
+    <%= image_tag "bike.png" , class:"bike-icon" %>
+    <div class="bike-description">
+      <p><span>Brand: </span><%= @bike['brand'] %></p>
+      <p><span>Model: </span><%= @bike['bike_model_name'] %></p>
+      <p><span>Total bike dist: </span><%= (@bike['distance'].to_f / 1000.0).round(0) %>km</p>
+      <p><span>Vax Exploatation:</span>
+      <% unless @bike.is_a?(Hash) %>
+        <% unless @selected_chain.nil? %>
+          <%= (@chains_km[@selected_chain['id']] / 2.5).round(2) %> %
+        <% end %></p>
+        <p><span>Active chain:</span>
+        <% unless @selected_chain.nil? %>
+          <%= @selected_chain['chain_name'] %>
+        <% end %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div id="bike_services">
-  <% @bike_services.each do |bike_service| %>
-    <%= render bike_service %>
-    <p>
-      <%= link_to "Show this bike service", bike_service %>
-    </p>
+  <% if @bike_services.empty? %>
+    <div class="alert-div"><p>This bike has not been serviced yet.</p></div>
+  <% else %>
+    <% @bike_services.each do |bike_service| %>
+      <%= render bike_service %>
+      <p>
+        <%= link_to "Show this bike service", bike_service %>
+      </p>
+    <% end %>
   <% end %>
 </div>
 
