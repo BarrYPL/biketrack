@@ -79,9 +79,6 @@ class ChainsController < ApplicationController
 
     def prepare_chart
       @rides = Ride.where(gear_id: @bike['bike_id']).where('timestamp > ?', @chain.vaxed_timestamp).group_by_day(:timestamp).sum(:distance)
-      
-      binding.pry
-      
       @cumulative_rides = @rides.transform_values.with_index { |value, index| (@rides.values[0..index].sum / 1000.0).round(0) }
     end
 
