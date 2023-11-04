@@ -73,7 +73,7 @@ class ChainsController < ApplicationController
     end
 
     def set_bike
-      @bike = Bike.find_by(id: params['bike'])
+      @bike = Bike.find_by(id: params['bike_id'])
       
       binding.pry
       
