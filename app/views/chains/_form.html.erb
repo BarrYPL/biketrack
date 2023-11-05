@@ -39,7 +39,7 @@
   <div class="form-group">
     <span><%= form.label :bike_id %></span>
     <%= form.select(
-      :bike_id,
+      :bike,
       options_for_select(Bike.all.map { |a| [a.bike_name, a.id] }, chain.bike_id),
       {},
       class: 'form-control') %>
