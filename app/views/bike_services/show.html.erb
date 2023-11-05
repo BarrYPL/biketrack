@@ -8,7 +8,7 @@
     <%= button_to "Delete service", @bike_service, method: :delete, class: "secondary" %>
   </div>
   
-  <%= link_to bike_services_path(bike: @bike.id), class: "primary"  do %>
-    <button>Back to services</button>
+  <%= link_to bike_services_path(bike: @bike.id)  do %>
+    <button class="primary">Back to services</button>
   <% end %>
 </div>
