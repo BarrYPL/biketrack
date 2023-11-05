@@ -1,6 +1,6 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index, :new, :show ]
+  before_action :set_bike, only: [:index, :new, :show, :create ]
   before_action :selected_chain, only: [:show, :index]
   before_action :prepare_chart, only: [:show]
 
