@@ -53,3 +53,16 @@
     width: 100%;
     text-align: center;
 }
+
+.bike-services table tr td {
+    padding: 5px;
+}
+
+.bike-services table tr td:nth-child(2) {
+    font-weight: bold;
+}
+
+.bike-services table thead {
+    font-weight: bold;
+    background: #73fd2e8a;
+}
