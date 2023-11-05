@@ -31,6 +31,9 @@ class ChainsController < ApplicationController
   def create
     @chain = Chain.new(chain_params)
     @bike = Bike.find_by(id: params['chain']['bike'])
+    
+    binding.pry
+    
     respond_to do |format|
       if @chain.save
         update_chains_of_bike(@chain.bike)
