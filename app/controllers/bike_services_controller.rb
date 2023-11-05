@@ -27,7 +27,7 @@ class BikeServicesController < ApplicationController
 
     respond_to do |format|
       if @bike_service.save
-        format.html { redirect_to bike_service_url(@bike_service, bike: @bike_service.bike), notice: "Bike service was successfully created." }
+        format.html { redirect_to bike_service_url(@bike_service), notice: "Bike service was successfully created." }
         format.json { render :show, status: :created, location: @bike_service }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class BikeServicesController < ApplicationController
   def update
     respond_to do |format|
       if @bike_service.update(bike_service_params)
-        format.html { redirect_to bike_service_url(@bike_service), notice: "Bike service was successfully updated." }
+        format.html { redirect_to bike_service_url(@bike_service, bike: @bike_service.bike), notice: "Bike service was successfully updated." }
         format.json { render :show, status: :ok, location: @bike_service }
       else
         format.html { render :edit, status: :unprocessable_entity }
