@@ -40,7 +40,7 @@
         <tr>
           <td><%= bike_service.service_name %></td>
           <td><%= bike_service.service_date %></td>
-          <td><%= link_to bike_service_path(id: bike_service.id) do %>
+          <td><%= link_to bike_service_path(id: bike_service.id, bike: @bike.id) do %>
             <button class="primary">Details</button>
           <% end %>
           </td>

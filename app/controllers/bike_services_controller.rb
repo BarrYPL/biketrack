@@ -1,7 +1,7 @@
 class BikeServicesController < ApplicationController
   before_action :set_bike_service, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index, :new ]
-  before_action :set_chain, only: [:index, :new ]
+  before_action :set_bike, only: [:index, :new, :show ]
+  before_action :set_chain, only: [:index, :new, :show ]
 
   # GET /bike_services or /bike_services.json
   def index
