@@ -59,8 +59,9 @@ class ChainsController < ApplicationController
 
   # DELETE /chains/1 or /chains/1.json
   def destroy
+    bike_to_update = @chain.bike
     @chain.destroy
-
+    update_chains_of_bike(bike_to_update)
     respond_to do |format|
       format.html { redirect_to chains_url, notice: "Chain was successfully destroyed." }
       format.json { head :no_content }
