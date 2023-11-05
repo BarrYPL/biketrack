@@ -8,5 +8,5 @@
     <%= button_to "Delete Chain", @chain, method: :delete, class: "secondary" %>
   </div>
 
-  <a href="/chains?bike=<%= @chain['bike_id'] %>"><button class="primary">Back to chains</button></a>
+  <a href="/chains?bike=<%= @chain.bike['id'] %>"><button class="primary">Back to chains</button></a>
 </div>
