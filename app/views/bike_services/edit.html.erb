@@ -4,9 +4,7 @@
 
 <div class="chain-options">
   <div class="main-options">
-    <%= link_to "Edit", edit_bike_service_path(@bike_service), class: "primary" %>
+    <a href="/bike_services?bike=<%= @bike_service.bike['id'] %>"><button class="primary">Back to services</button></a>
     <%= button_to "Delete", @bike_service, method: :delete, class: "secondary" %>
   </div>
-
-  <a href="/chains?bike=<%= @bike_service.bike['id'] %>"><button class="primary">Back to services</button></a>
 </div>
