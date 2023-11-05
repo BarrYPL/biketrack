@@ -58,7 +58,7 @@
     padding: 5px;
 }
 
-.bike-services table tr:nth-child(odd) {
+.bike-services table tr:nth-child(2) {
     background: rgba(0,0,0,0.3);
 }
 
