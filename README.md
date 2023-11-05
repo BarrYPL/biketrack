@@ -1,4 +1,4 @@
-![image](https://github.com/BarrYPL/biketrack/assets/33989477/ef0af9fe-11b3-4052-8060-7df8e8e2f393)# Biketrack.pro
+# Biketrack.pro
 
 <!-- Table of Contents -->
 # :notebook_with_decorative_cover: Table of Contents
