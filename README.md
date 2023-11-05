@@ -17,15 +17,15 @@ The presented application is designed for tracking data related to the condition
 
 <!-- Key Features -->
 ### :star: Key Features
-Bicycle Data Tracking: Easily track the condition of multiple bicycles, including details about each bike's specifications.
+- Bicycle Data Tracking: Easily track the condition of multiple bicycles, including details about each bike's specifications.
 
-Chain Management: Associate each ride recorded on Strava with a specific chain and bicycle, all based on the last change date of the chain.
+- Chain Management: Associate each ride recorded on Strava with a specific chain and bicycle, all based on the last change date of the chain.
 
-Maintenance Notes: Keep a record of maintenance activities with accompanying dates, ensuring a comprehensive maintenance history.
+- Maintenance Notes: Keep a record of maintenance activities with accompanying dates, ensuring a comprehensive maintenance history.
 
-Strava Integration: Seamlessly integrate with the Strava API to retrieve and link ride data.
+- Strava Integration: Seamlessly integrate with the Strava API to retrieve and link ride data.
 
-User-Friendly Interface: The application provides an intuitive user interface for easy navigation and data entry.
+- User-Friendly Interface: The application provides an intuitive user interface for easy navigation and data entry.
 
 <!-- Inspiration -->
 ### :tada: Inspiration
