@@ -1,4 +1,4 @@
-# Biketrack.pro
+![image](https://github.com/BarrYPL/biketrack/assets/33989477/ef0af9fe-11b3-4052-8060-7df8e8e2f393)# Biketrack.pro
 
 <!-- Table of Contents -->
 # :notebook_with_decorative_cover: Table of Contents
@@ -8,7 +8,6 @@
   * [Inspiration](#tada-inspiration)
   * [Screenshots](#camera-screenshots)
   * [Tech Stack](#space_invader-tech-stack)
-  * [Features](#dart-features)
 - [Roadmap](#compass-roadmap)
 
 <!-- About the Project -->
@@ -38,3 +37,31 @@ The inspiration for this application came from a friend's need to keep track of 
   <img src="https://github.com/BarrYPL/biketrack/blob/main/app/assets/images/main.png?raw=true" alt="screenshot" />
   App Main View
 </div>
+
+<div align="center"> 
+  <img src="https://github.com/BarrYPL/biketrack/blob/main/app/assets/images/stats.png?raw=true" alt="screenshot" />
+  App Services View
+</div>
+
+<div align="center"> 
+  <img src="https://github.com/BarrYPL/biketrack/blob/main/app/assets/images/views.png?raw=true" alt="screenshot" />
+  App Stats View
+</div>
+
+<!-- TechStack -->
+### :space_invader: Tech Stack
+
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://www.ruby-lang.org/">Ruby</a></li>
+    <li><a href="https://rubyonrails.org">Rails Framework</a></li>
+    <li><a href="https://oauth.net/2/">Rails Framework</a></li>
+  </ul>
+</details>
+
+## :compass: Roadmap
+
+* [ ] Add counting each chain total distance
+* [ ] Add customized bikes images
+* [ ] Add loading rides in background
