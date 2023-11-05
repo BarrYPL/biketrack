@@ -5,5 +5,7 @@
 <br>
 
 <div>
-  <%= link_to "Back to bike services", bike_services_path %>
+  <%= link_to  bike_services_path(bike: @bike.id) do %>
+    <button class="primary">Back to bike services</button>
+  <% end %>
 </div>
