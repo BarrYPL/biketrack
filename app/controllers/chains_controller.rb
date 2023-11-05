@@ -1,6 +1,6 @@
 class ChainsController < ApplicationController
   before_action :set_chain, only: %i[ show edit update destroy ]
-  before_action :set_bike, only: [:index, :new, :show, :create ]
+  before_action :set_bike, only: [:index, :new, :show ]
   before_action :selected_chain, only: [:show, :index]
   before_action :prepare_chart, only: [:show]
 
@@ -30,9 +30,7 @@ class ChainsController < ApplicationController
   # POST /chains or /chains.json
   def create
     @chain = Chain.new(chain_params)
-    
-    binding.pry
-    
+    @bike = Bike.find_by(id: params['chain']['bike'])
     respond_to do |format|
       if @chain.save
         update_chains_of_bike(@chain.bike)
