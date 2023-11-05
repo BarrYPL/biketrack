@@ -33,7 +33,7 @@ class ChainsController < ApplicationController
     respond_to do |format|
       if @chain.save
         update_chains_of_bike(@chain.bike)
-        format.html { redirect_to chain_url(@chain), notice: "Chain was successfully created.", bike: @chain.bike }
+        format.html { redirect_to chain_url(@chain, bike: @chain.bike), notice: "Chain was successfully created."}
         format.json { render :show, status: :created, location: @chain }
       else
         format.html { render :new, status: :unprocessable_entity }
