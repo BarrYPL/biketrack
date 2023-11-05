@@ -46,7 +46,8 @@ class ChainsController < ApplicationController
   def update
     respond_to do |format|
       if @chain.update(chain_params)
-        update_chains_of_bike(@chain.bike)
+        update_chains_of_bike(@chain.bike, bike: @bike.id)
+        #I need to update redirect to chain_url tomorrow.
         format.html { redirect_to chain_url(@chain), notice: "Chain was successfully updated." }
         format.json { render :show, status: :ok, location: @chain }
       else

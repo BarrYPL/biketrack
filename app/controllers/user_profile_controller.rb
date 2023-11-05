@@ -23,6 +23,7 @@ class UserProfileController < ApplicationController
                 end
             end
         else
+            #get all rides
             page = 1
             loop do
                 activities_paged_url = "https://www.strava.com/api/v3/athlete/activities?per_page=50&page=#{page}"
@@ -39,6 +40,8 @@ class UserProfileController < ApplicationController
                 page += 1
             end
         end
+
+        #get last ride info
         @last_ride_info = Ride.where(athlete_id: session[:current_user_id]).order(timestamp: :desc).first
         @last_ride = Hash.new()
         unless @last_ride_info.nil?
