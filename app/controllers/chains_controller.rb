@@ -30,10 +30,7 @@ class ChainsController < ApplicationController
   # POST /chains or /chains.json
   def create
     @chain = Chain.new(chain_params)
-    @bike = Bike.find_by(id: params['chain']['bike'])
-    
-    binding.pry
-    
+    @bike = Bike.find_by(id: params['chain']['bike_id'])
     respond_to do |format|
       if @chain.save
         update_chains_of_bike(@chain.bike)
