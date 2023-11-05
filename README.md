@@ -56,7 +56,8 @@ The inspiration for this application came from a friend's need to keep track of 
   <ul>
     <li><a href="https://www.ruby-lang.org/">Ruby</a></li>
     <li><a href="https://rubyonrails.org">Rails Framework</a></li>
-    <li><a href="https://oauth.net/2/">Rails Framework</a></li>
+    <li><a href="https://oauth.net/2/">Oauth 2</a></li>
+    <li>Strava API</li>
   </ul>
 </details>
 
