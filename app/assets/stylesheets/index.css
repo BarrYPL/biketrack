@@ -58,8 +58,8 @@
     padding: 5px;
 }
 
-.bike-services table tr td:nth-child(2) {
-    font-weight: bold;
+.bike-services table tr:nth-child(2) {
+    background: rgba(0,0,0,0.3);
 }
 
 .bike-services table thead {
