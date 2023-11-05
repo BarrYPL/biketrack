@@ -4,7 +4,7 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
-  * [Key Features](#star-key-features
+  * [Key Features](#star-key-features)
   * [Inspiration](#tada-inspiration)
   * [Screenshots](#camera-screenshots)
   * [Tech Stack](#space_invader-tech-stack)
@@ -33,7 +33,8 @@ User-Friendly Interface: The application provides an intuitive user interface fo
 The inspiration for this application came from a friend's need to keep track of the kilometers ridden since the last mainstence. What initially seemed like a straightforward request quickly evolved as it became evident that he has much more ideas. This complexity led to the development of a comprehensive solution for tracking and managing bicycle data effectively.
 
 <!-- Screenshots -->
-
+### :camera: Screenshots
 <div align="center"> 
   <img src="https://github.com/BarrYPL/biketrack/blob/main/app/assets/images/main.png?raw=true" alt="screenshot" />
+  App Main View
 </div>
