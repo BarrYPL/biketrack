@@ -24,6 +24,7 @@ class BikeServicesController < ApplicationController
   # POST /bike_services or /bike_services.json
   def create
     @bike_service = BikeService.new(bike_service_params)
+    @bike = Bike.find_by(id: params['bike_service']['bike_id'])
 
     respond_to do |format|
       if @bike_service.save

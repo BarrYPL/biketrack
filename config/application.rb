@@ -17,5 +17,7 @@ module Biketrack
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << "a59d-2a02-a31d-a138-2e00-2013-e1cf-5c21-48c1.ngrok-free.app"
+    config.hosts << "a59d-2a02-a31d-a138-2e00-2013-e1cf-5c21-48c1.ngrok-free.app"
   end
 end

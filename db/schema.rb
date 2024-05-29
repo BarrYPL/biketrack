@@ -12,6 +12,10 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_10_31_122350) do
   create_table "bike_services", force: :cascade do |t|
+    t.string "service_name"
+    t.string "service_description"
+    t.date "service_date"
+    t.integer "bike_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_122350) do
     t.float "distance"
     t.integer "athlete_id"
     t.integer "moving_time"
-    t.date "timestamp"
+    t.integer "timestamp"
     t.string "gear_id"
     t.float "average_speed"
     t.float "max_speed"
