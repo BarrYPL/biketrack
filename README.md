@@ -66,3 +66,7 @@ The inspiration for this application came from a friend's need to keep track of 
 * [ ] Add counting each chain total distance
 * [ ] Add customized bikes images
 * [ ] Add loading rides in background
+* [ ] Add chain history
+* [ ] Add personal settings
+* [ ] Add calendar
+* [ ] Find out better UI
